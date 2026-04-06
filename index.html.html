@@ -1,0 +1,1259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DAC IQ Portal — Help Center | Basic Access</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --midnight: #07303D;
+    --navy: #134B60;
+    --cyan: #3AC7D6;
+    --aqua: #A2F9F9;
+    --forest: #024534;
+    --emerald: #13A87D;
+    --lake: #2b96af;
+    --white: #FFFFFF;
+    --off-white: #F4FAFA;
+    --light-gray: #E8F4F6;
+    --mid-gray: #8AACB4;
+    --text-primary: #07303D;
+    --text-secondary: #2b5565;
+    --text-muted: #5a8696;
+    --success-bg: #E6FAF5;
+    --success-border: #13A87D;
+    --warning-bg: #FFF8EC;
+    --warning-border: #E0A020;
+    --info-bg: #E8F7FA;
+    --info-border: #3AC7D6;
+    --sidebar-w: 272px;
+    --radius: 10px;
+    --radius-sm: 6px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--text-primary);
+    background: var(--off-white);
+    min-height: 100vh;
+  }
+
+  /* TOP HEADER */
+  .top-bar {
+    background: var(--midnight);
+    color: white;
+    padding: 0 32px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 2px solid var(--cyan);
+  }
+  .top-bar-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .brand-dot {
+    width: 28px; height: 28px;
+    background: linear-gradient(135deg, var(--cyan), var(--emerald));
+    border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .brand-dot svg { width: 16px; height: 16px; fill: white; }
+  .brand-name {
+    font-size: 15px;
+    font-weight: 600;
+    color: white;
+    letter-spacing: 0.02em;
+  }
+  .brand-sub {
+    font-size: 12px;
+    color: var(--mid-gray);
+    margin-left: 4px;
+  }
+  .top-bar-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  .role-badge {
+    background: rgba(58, 199, 214, 0.15);
+    border: 1px solid rgba(58, 199, 214, 0.4);
+    color: var(--aqua);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 20px;
+  }
+  .search-bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: var(--radius-sm);
+    padding: 6px 12px;
+    cursor: text;
+    transition: border-color 0.2s;
+  }
+  .search-bar:hover { border-color: rgba(58,199,214,0.5); }
+  .search-bar svg { width: 14px; height: 14px; stroke: var(--mid-gray); fill: none; }
+  .search-bar span { font-size: 13px; color: var(--mid-gray); }
+
+  /* LAYOUT */
+  .layout {
+    display: flex;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+    gap: 32px;
+    align-items: flex-start;
+  }
+
+  /* SIDEBAR */
+  .sidebar {
+    width: var(--sidebar-w);
+    flex-shrink: 0;
+    position: sticky;
+    top: 72px;
+    padding: 28px 0;
+    max-height: calc(100vh - 72px);
+    overflow-y: auto;
+  }
+  .sidebar-section-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    padding: 0 12px 8px;
+    margin-top: 20px;
+  }
+  .sidebar-section-label:first-child { margin-top: 0; }
+  .sidebar-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 12px;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    font-size: 14px;
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: all 0.15s;
+    border-left: 3px solid transparent;
+    margin-bottom: 1px;
+  }
+  .sidebar-item:hover {
+    background: var(--light-gray);
+    color: var(--navy);
+  }
+  .sidebar-item.active {
+    background: var(--info-bg);
+    color: var(--navy);
+    border-left-color: var(--cyan);
+    font-weight: 500;
+  }
+  .sidebar-item svg {
+    width: 16px; height: 16px;
+    flex-shrink: 0;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 1.8;
+  }
+  .sidebar-item .item-count {
+    margin-left: auto;
+    font-size: 11px;
+    background: var(--light-gray);
+    color: var(--text-muted);
+    padding: 1px 7px;
+    border-radius: 10px;
+    font-family: 'DM Mono', monospace;
+  }
+
+  /* MAIN CONTENT */
+  .main {
+    flex: 1;
+    padding: 28px 0 64px;
+    min-width: 0;
+  }
+
+  /* WELCOME HERO */
+  .welcome-card {
+    background: linear-gradient(135deg, var(--midnight) 0%, var(--navy) 100%);
+    border-radius: 14px;
+    padding: 32px 36px;
+    margin-bottom: 32px;
+    color: white;
+    position: relative;
+    overflow: hidden;
+  }
+  .welcome-card::before {
+    content: '';
+    position: absolute;
+    top: -40px; right: -40px;
+    width: 200px; height: 200px;
+    background: radial-gradient(circle, rgba(58,199,214,0.15) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .welcome-card::after {
+    content: '';
+    position: absolute;
+    bottom: -60px; left: 30%;
+    width: 280px; height: 280px;
+    background: radial-gradient(circle, rgba(19,168,125,0.1) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .welcome-eyebrow {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--cyan);
+    margin-bottom: 8px;
+  }
+  .welcome-title {
+    font-size: 26px;
+    font-weight: 600;
+    line-height: 1.2;
+    margin-bottom: 10px;
+  }
+  .welcome-desc {
+    font-size: 14px;
+    color: rgba(255,255,255,0.7);
+    max-width: 560px;
+    line-height: 1.6;
+  }
+  .welcome-features {
+    display: flex;
+    gap: 12px;
+    margin-top: 22px;
+    flex-wrap: wrap;
+  }
+  .feature-chip {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 20px;
+    padding: 5px 12px;
+    font-size: 12px;
+    color: rgba(255,255,255,0.85);
+    font-weight: 500;
+  }
+  .feature-chip-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--cyan);
+    flex-shrink: 0;
+  }
+
+  /* QUICK START */
+  .quick-start {
+    margin-bottom: 36px;
+  }
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+  .section-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--midnight);
+  }
+  .section-sub {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-top: 2px;
+  }
+  .quick-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 14px;
+  }
+  .quick-card {
+    background: white;
+    border: 1px solid var(--light-gray);
+    border-radius: var(--radius);
+    padding: 18px 20px;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-decoration: none;
+    display: block;
+  }
+  .quick-card:hover {
+    border-color: var(--cyan);
+    box-shadow: 0 4px 16px rgba(58,199,214,0.12);
+    transform: translateY(-2px);
+  }
+  .quick-card-icon {
+    width: 36px; height: 36px;
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 12px;
+  }
+  .quick-card-icon svg {
+    width: 18px; height: 18px;
+    stroke: white; fill: none; stroke-width: 2;
+  }
+  .icon-teal { background: linear-gradient(135deg, var(--cyan), var(--lake)); }
+  .icon-green { background: linear-gradient(135deg, var(--emerald), var(--forest)); }
+  .icon-navy { background: linear-gradient(135deg, var(--lake), var(--navy)); }
+  .quick-card-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+  }
+  .quick-card-desc {
+    font-size: 12px;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+
+  /* SECTION DIVIDER */
+  .section-divider {
+    height: 1px;
+    background: var(--light-gray);
+    margin: 36px 0;
+  }
+
+  /* CONTENT SECTIONS */
+  .content-section {
+    margin-bottom: 40px;
+    scroll-margin-top: 80px;
+  }
+  .content-section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 20px;
+    background: white;
+    border: 1px solid var(--light-gray);
+    border-radius: var(--radius) var(--radius) 0 0;
+    cursor: pointer;
+    user-select: none;
+    transition: background 0.15s;
+    border-bottom: 2px solid var(--cyan);
+  }
+  .content-section-header:hover { background: var(--info-bg); }
+  .section-icon {
+    width: 32px; height: 32px;
+    border-radius: 7px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .section-icon svg { width: 16px; height: 16px; stroke: white; fill: none; stroke-width: 2; }
+  .section-header-text { flex: 1; }
+  .section-header-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--midnight);
+  }
+  .section-header-sub {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-top: 1px;
+  }
+  .section-toggle {
+    width: 24px; height: 24px;
+    border-radius: 50%;
+    background: var(--light-gray);
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.2s;
+    flex-shrink: 0;
+  }
+  .section-toggle svg { width: 12px; height: 12px; stroke: var(--text-muted); fill: none; stroke-width: 2.5; transition: transform 0.25s; }
+  .content-section.open .section-toggle svg { transform: rotate(180deg); }
+  .section-body {
+    background: white;
+    border: 1px solid var(--light-gray);
+    border-top: none;
+    border-radius: 0 0 var(--radius) var(--radius);
+    display: none;
+    padding: 28px 28px 32px;
+  }
+  .content-section.open .section-body { display: block; }
+
+  /* ARTICLE STYLES */
+  .article-intro {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: 24px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--light-gray);
+  }
+
+  .article-block { margin-bottom: 28px; }
+  .article-block:last-child { margin-bottom: 0; }
+
+  .article-h3 {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--midnight);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .article-h3::before {
+    content: '';
+    display: inline-block;
+    width: 3px;
+    height: 16px;
+    background: var(--cyan);
+    border-radius: 2px;
+    flex-shrink: 0;
+  }
+
+  .article-p {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.75;
+    margin-bottom: 12px;
+  }
+
+  /* STEPS */
+  .steps { list-style: none; counter-reset: step-counter; }
+  .steps li {
+    counter-increment: step-counter;
+    display: flex;
+    gap: 14px;
+    margin-bottom: 12px;
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+  .steps li::before {
+    content: counter(step-counter);
+    width: 24px; height: 24px;
+    background: var(--cyan);
+    color: var(--midnight);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px;
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 2px;
+    font-family: 'DM Mono', monospace;
+  }
+
+  /* BULLET LIST */
+  .bullet-list { list-style: none; }
+  .bullet-list li {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 8px;
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+  .bullet-list li::before {
+    content: '';
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--emerald);
+    flex-shrink: 0;
+    margin-top: 8px;
+  }
+
+  /* TERM LIST (key-value style) */
+  .term-list { }
+  .term-item {
+    display: flex;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--light-gray);
+    font-size: 14px;
+  }
+  .term-item:last-child { border-bottom: none; }
+  .term-label {
+    font-weight: 600;
+    color: var(--midnight);
+    min-width: 160px;
+    flex-shrink: 0;
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    padding-top: 2px;
+  }
+  .term-desc { color: var(--text-secondary); line-height: 1.6; }
+
+  /* CALLOUT BOXES */
+  .callout {
+    border-radius: var(--radius-sm);
+    padding: 14px 16px;
+    margin: 16px 0;
+    display: flex;
+    gap: 12px;
+    font-size: 13px;
+    line-height: 1.6;
+  }
+  .callout-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+  .callout-body strong { display: block; margin-bottom: 2px; font-size: 13px; }
+  .callout.tip { background: var(--success-bg); border-left: 3px solid var(--success-border); color: var(--forest); }
+  .callout.note { background: var(--info-bg); border-left: 3px solid var(--info-border); color: var(--navy); }
+  .callout.warning { background: var(--warning-bg); border-left: 3px solid var(--warning-border); color: #5c3a00; }
+
+  /* DATA TABLE */
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    margin: 12px 0;
+  }
+  .data-table th {
+    background: var(--midnight);
+    color: white;
+    padding: 9px 14px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+  .data-table th:first-child { border-radius: 6px 0 0 0; }
+  .data-table th:last-child { border-radius: 0 6px 0 0; }
+  .data-table td {
+    padding: 9px 14px;
+    border-bottom: 1px solid var(--light-gray);
+    color: var(--text-secondary);
+    vertical-align: top;
+    line-height: 1.5;
+  }
+  .data-table tr:last-child td { border-bottom: none; }
+  .data-table tr:nth-child(even) td { background: var(--off-white); }
+
+  /* COLUMN TAG */
+  .col-tag {
+    display: inline-block;
+    background: var(--light-gray);
+    color: var(--text-secondary);
+    border-radius: 4px;
+    padding: 1px 7px;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    margin: 2px 2px 2px 0;
+  }
+
+  /* SUBSECTION TABS */
+  .tabs-row {
+    display: flex;
+    gap: 4px;
+    border-bottom: 2px solid var(--light-gray);
+    margin-bottom: 20px;
+  }
+  .tab-btn {
+    padding: 8px 16px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-muted);
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -2px;
+    cursor: pointer;
+    border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+    transition: all 0.15s;
+  }
+  .tab-btn:hover { color: var(--navy); background: var(--light-gray); }
+  .tab-btn.active { color: var(--navy); border-bottom-color: var(--cyan); font-weight: 600; }
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; }
+
+  /* SEARCH */
+  .page-search-wrap {
+    position: relative;
+    margin-bottom: 28px;
+  }
+  .page-search {
+    width: 100%;
+    padding: 12px 16px 12px 42px;
+    border: 1.5px solid var(--light-gray);
+    border-radius: var(--radius);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    color: var(--text-primary);
+    background: white;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .page-search:focus { border-color: var(--cyan); }
+  .page-search::placeholder { color: var(--text-muted); }
+  .page-search-icon {
+    position: absolute;
+    left: 14px; top: 50%;
+    transform: translateY(-50%);
+    width: 16px; height: 16px;
+    stroke: var(--mid-gray); fill: none; stroke-width: 2;
+  }
+
+  /* BACK TO TOP */
+  .back-top {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--lake);
+    font-size: 13px;
+    font-weight: 500;
+    text-decoration: none;
+    margin-top: 20px;
+    padding: 6px 12px;
+    border-radius: 20px;
+    border: 1px solid rgba(43,150,175,0.25);
+    transition: all 0.15s;
+  }
+  .back-top:hover { background: var(--info-bg); border-color: var(--lake); }
+  .back-top svg { width: 12px; height: 12px; stroke: currentColor; fill: none; stroke-width: 2.5; }
+
+  /* FOOTER */
+  .help-footer {
+    background: var(--midnight);
+    color: rgba(255,255,255,0.5);
+    text-align: center;
+    padding: 24px;
+    font-size: 12px;
+    margin-top: 60px;
+  }
+  .help-footer a { color: var(--cyan); text-decoration: none; }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .sidebar { display: none; }
+    .layout { padding: 0 16px; }
+    .welcome-card { padding: 24px 22px; }
+    .welcome-title { font-size: 20px; }
+    .quick-grid { grid-template-columns: 1fr 1fr; }
+  }
+
+  /* ANIMATION */
+  .section-body { animation: fadeIn 0.2s ease; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+</style>
+</head>
+<body>
+
+<!-- TOP HEADER -->
+<div class="top-bar">
+  <div class="top-bar-brand">
+    <div class="brand-dot">
+      <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+    </div>
+    <span class="brand-name">DAC IQ Portal</span>
+    <span class="brand-sub">/ Help Center</span>
+  </div>
+  <div class="top-bar-right">
+    <div class="search-bar">
+      <svg viewBox="0 0 24 24" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <span>Search help...</span>
+    </div>
+    <div class="role-badge">Basic Access · Standard</div>
+  </div>
+</div>
+
+<!-- MAIN LAYOUT -->
+<div class="layout">
+
+  <!-- SIDEBAR -->
+  <nav class="sidebar">
+    <div class="sidebar-section-label">Getting Started</div>
+    <a href="#quick-start" class="sidebar-item active" onclick="smoothScroll(event,'quick-start')">
+      <svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+      Quick Start Guide
+    </a>
+
+    <div class="sidebar-section-label">Analytics</div>
+    <a href="#analytics" class="sidebar-item" onclick="smoothScroll(event,'analytics')">
+      <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+      Dashboard
+    </a>
+    <a href="#usage" class="sidebar-item" onclick="smoothScroll(event,'usage')">
+      <svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+      Usage Analytics
+    </a>
+
+    <div class="sidebar-section-label">Device Management</div>
+    <a href="#devices" class="sidebar-item" onclick="smoothScroll(event,'devices')">
+      <svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+      Device Details & Actions
+    </a>
+
+    <div class="sidebar-section-label">Reports</div>
+    <a href="#reports" class="sidebar-item" onclick="smoothScroll(event,'reports')">
+      <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+      Ad-Hoc Report Builder
+      <span class="item-count">5</span>
+    </a>
+
+    <div class="sidebar-section-label">Support</div>
+    <a href="mailto:support@dataactivationcenter.com" class="sidebar-item">
+      <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+      Contact Support
+    </a>
+  </nav>
+
+  <!-- MAIN -->
+  <main class="main">
+
+    <!-- WELCOME -->
+    <div class="welcome-card" id="quick-start">
+      <div class="welcome-eyebrow">Basic Access · Standard Plan</div>
+      <div class="welcome-title">Welcome to the DAC IQ Portal</div>
+      <div class="welcome-desc">You have access to four core features — everything you need to monitor your devices, track usage, and build custom reports. This guide covers each one clearly, step by step.</div>
+      <div class="welcome-features">
+        <div class="feature-chip"><div class="feature-chip-dot"></div>Analytics Dashboard</div>
+        <div class="feature-chip"><div class="feature-chip-dot"></div>Usage Monitoring</div>
+        <div class="feature-chip"><div class="feature-chip-dot"></div>Device Details &amp; Actions</div>
+        <div class="feature-chip"><div class="feature-chip-dot"></div>Ad-Hoc Reports</div>
+      </div>
+    </div>
+
+    <!-- QUICK START -->
+    <div class="quick-start">
+      <div class="section-header">
+        <div>
+          <div class="section-title">What do you want to do?</div>
+          <div class="section-sub">Jump directly to what you need</div>
+        </div>
+      </div>
+      <div class="quick-grid">
+        <a href="#analytics" class="quick-card" onclick="openSection(event,'analytics')">
+          <div class="quick-card-icon icon-teal">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+          </div>
+          <div class="quick-card-title">View my dashboard</div>
+          <div class="quick-card-desc">See cost, activity, and usage at a glance</div>
+        </a>
+        <a href="#usage" class="quick-card" onclick="openSection(event,'usage')">
+          <div class="quick-card-icon icon-teal">
+            <svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+          </div>
+          <div class="quick-card-title">Check data usage</div>
+          <div class="quick-card-desc">Monitor SIM utilization and usage trends</div>
+        </a>
+        <a href="#devices" class="quick-card" onclick="openSection(event,'devices')">
+          <div class="quick-card-icon icon-navy">
+            <svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+          </div>
+          <div class="quick-card-title">Find a device</div>
+          <div class="quick-card-desc">Search by ICCID, IMEI, MSISDN, and more</div>
+        </a>
+        <a href="#devices" class="quick-card" onclick="openSection(event,'devices')">
+          <div class="quick-card-icon icon-navy">
+            <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+          </div>
+          <div class="quick-card-title">Activate or suspend a SIM</div>
+          <div class="quick-card-desc">Perform single or bulk device actions</div>
+        </a>
+        <a href="#reports" class="quick-card" onclick="openSection(event,'reports')">
+          <div class="quick-card-icon icon-green">
+            <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          </div>
+          <div class="quick-card-title">Build a custom report</div>
+          <div class="quick-card-desc">Filter, analyze, and export device data</div>
+        </a>
+        <a href="#reports" class="quick-card" onclick="openSection(event,'reports')">
+          <div class="quick-card-icon icon-green">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <div class="quick-card-title">Schedule a report</div>
+          <div class="quick-card-desc">Set up daily, weekly, or monthly delivery</div>
+        </a>
+      </div>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <!-- SECTION 1: ANALYTICS DASHBOARD -->
+    <div class="content-section open" id="analytics">
+      <div class="content-section-header" onclick="toggleSection('analytics')">
+        <div class="section-icon icon-teal">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+        </div>
+        <div class="section-header-text">
+          <div class="section-header-title">Analytics Dashboard</div>
+          <div class="section-header-sub">Your central view for cost, activity, and usage data</div>
+        </div>
+        <div class="section-toggle">
+          <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+      </div>
+      <div class="section-body">
+        <p class="article-intro">The Dashboard is your analytics home base. It shows you high-level cost and activity data across your entire deployment, with charts you can filter and drill into. Everything updates based on the billing cycle and filters you select.</p>
+
+        <div class="tabs-row">
+          <button class="tab-btn active" onclick="switchTab(event,'dash','overview')">Overview</button>
+          <button class="tab-btn" onclick="switchTab(event,'dash','filters')">Using Filters</button>
+          <button class="tab-btn" onclick="switchTab(event,'dash','export')">Export to PDF</button>
+        </div>
+
+        <div id="dash-overview" class="tab-panel active">
+          <div class="article-block">
+            <div class="article-h3">What you'll see on the Dashboard</div>
+            <p class="article-p">Your Dashboard default view includes two pages you can switch between:</p>
+            <div class="term-list">
+              <div class="term-item">
+                <div class="term-label">Dashboard</div>
+                <div class="term-desc">Top-level widgets showing cost and activity data cross-referenced across your deployment. A good daily check-in view.</div>
+              </div>
+              <div class="term-item">
+                <div class="term-label">Usage</div>
+                <div class="term-desc">An all-in-one view for data, SMS, and voice usage plus SIM utilization — current billing cycle and historical trends.</div>
+              </div>
+            </div>
+          </div>
+          <div class="article-block">
+            <div class="article-h3">Navigating between pages</div>
+            <ol class="steps">
+              <li>Go to the <strong>Analytics</strong> section in the portal's main navigation.</li>
+              <li>Select the page tab you want — <strong>Dashboard</strong> or <strong>Usage</strong> — at the top of the screen.</li>
+              <li>Charts load automatically based on your current filter settings.</li>
+            </ol>
+          </div>
+          <div class="callout tip">
+            <div class="callout-icon">💡</div>
+            <div class="callout-body"><strong>Good to know</strong>Most charts are interactive — click on a legend item to show or hide that metric. This lets you zero in on specific carriers, customers, or technologies without leaving the page.</div>
+          </div>
+        </div>
+
+        <div id="dash-filters" class="tab-panel">
+          <div class="article-block">
+            <div class="article-h3">Adjusting what data you see</div>
+            <p class="article-p">Session Filters let you narrow the dashboard to exactly the data you need. Changes apply across all widgets on the current page until you reset them.</p>
+            <ol class="steps">
+              <li>Look for the <strong>Session Filters</strong> area at the top of any analytics page.</li>
+              <li>Choose your <strong>Carrier Account</strong>, <strong>Customer</strong>, or <strong>Technology</strong> to narrow the scope.</li>
+              <li>Select your preferred data unit: <strong>GB</strong>, <strong>MB</strong>, or <strong>KB</strong>.</li>
+              <li>Use the <strong>sliding bar</strong> to select the billing cycle time frame (up to 12 months back).</li>
+              <li>Select <strong>Apply</strong> to update all charts with your selections.</li>
+            </ol>
+          </div>
+          <div class="callout note">
+            <div class="callout-icon">ℹ️</div>
+            <div class="callout-body"><strong>Currency filters</strong>If your deployment spans multiple currencies, a currency filter will appear automatically in the Session Filters panel.</div>
+          </div>
+        </div>
+
+        <div id="dash-export" class="tab-panel">
+          <div class="article-block">
+            <div class="article-h3">Printing or saving a dashboard view</div>
+            <ol class="steps">
+              <li>Set up your dashboard filters and page view exactly as you want them to appear.</li>
+              <li>Select the <strong>···</strong> (more options) button next to any report tab.</li>
+              <li>Choose <strong>Print PDF</strong> from the menu.</li>
+              <li>Confirm the download in the pop-up dialog — your PDF will save to your computer.</li>
+            </ol>
+          </div>
+          <div class="callout tip">
+            <div class="callout-icon">💡</div>
+            <div class="callout-body"><strong>Tip</strong>Apply your session filters before printing to capture only the data range and carrier/customer view you want in the PDF.</div>
+          </div>
+        </div>
+
+        <a href="#quick-start" class="back-top" onclick="smoothScroll(event,'quick-start')">
+          <svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"/></svg>
+          Back to top
+        </a>
+      </div>
+    </div>
+
+    <!-- SECTION 2: USAGE -->
+    <div class="content-section" id="usage">
+      <div class="content-section-header" onclick="toggleSection('usage')">
+        <div class="section-icon icon-teal">
+          <svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+        </div>
+        <div class="section-header-text">
+          <div class="section-header-title">Usage Analytics</div>
+          <div class="section-header-sub">Data, SMS, voice usage and SIM utilization at a glance</div>
+        </div>
+        <div class="section-toggle">
+          <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+      </div>
+      <div class="section-body">
+        <p class="article-intro">The Usage page is your all-in-one hub for understanding how your devices are consuming data, SMS, and voice. You can see both the current billing cycle and the full history of your deployment side by side.</p>
+
+        <div class="article-block">
+          <div class="article-h3">What's shown on this page</div>
+          <ul class="bullet-list">
+            <li>Current cycle-to-date usage for data, SMS, and voice</li>
+            <li>SIM utilization percentages — how much of your pool is actively being used</li>
+            <li>Historical usage trends across past billing cycles</li>
+            <li>Inactivity monitoring — SIMs that haven't connected recently</li>
+          </ul>
+        </div>
+
+        <div class="article-block">
+          <div class="article-h3">Reading the charts</div>
+          <p class="article-p">Each widget on the Usage page can be filtered independently using the chart's built-in metric toggles. Click any legend item to show or hide it. This is especially useful for comparing specific carriers or customer segments without changing your session filters.</p>
+        </div>
+
+        <div class="callout note">
+          <div class="callout-icon">ℹ️</div>
+          <div class="callout-body"><strong>Usage vs. Dashboard</strong>The Dashboard page gives you a cost-and-activity summary. The Usage page focuses specifically on consumption metrics. Use both together for the full picture.</div>
+        </div>
+
+        <a href="#quick-start" class="back-top" onclick="smoothScroll(event,'quick-start')">
+          <svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"/></svg>
+          Back to top
+        </a>
+      </div>
+    </div>
+
+    <!-- SECTION 3: DEVICE MANAGEMENT -->
+    <div class="content-section" id="devices">
+      <div class="content-section-header" onclick="toggleSection('devices')">
+        <div class="section-icon icon-navy">
+          <svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+        </div>
+        <div class="section-header-text">
+          <div class="section-header-title">Device Details &amp; Actions</div>
+          <div class="section-header-sub">Find devices, view their profiles, and take action</div>
+        </div>
+        <div class="section-toggle">
+          <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+      </div>
+      <div class="section-body">
+        <p class="article-intro">Device Management is where you search for individual SIMs, review their full profile, and perform carrier actions like activating, deactivating, or changing rate plans — for one device or many at once.</p>
+
+        <div class="tabs-row">
+          <button class="tab-btn active" onclick="switchTab(event,'dev','search')">Searching for Devices</button>
+          <button class="tab-btn" onclick="switchTab(event,'dev','columns')">Columns &amp; Details</button>
+          <button class="tab-btn" onclick="switchTab(event,'dev','actions')">Taking Action</button>
+        </div>
+
+        <div id="dev-search" class="tab-panel active">
+          <div class="article-block">
+            <div class="article-h3">Three ways to search</div>
+            <div class="term-list">
+              <div class="term-item">
+                <div class="term-label">Quick Search</div>
+                <div class="term-desc">Use the funnel icon to open Quick Search. Search by any device ID type (ICCID, MSISDN, IMEI, IMSI, EID, or Custom Columns) and filter by Customer, Status, or Rate Plan.</div>
+              </div>
+              <div class="term-item">
+                <div class="term-label">List Search</div>
+                <div class="term-desc">Search for up to 2,000 devices at once by entering comma-separated device IDs. Ideal for bulk lookups or comparisons.</div>
+              </div>
+              <div class="term-item">
+                <div class="term-label">Column Filters</div>
+                <div class="term-desc">Click the <strong>Columns</strong> button in the results table to toggle which fields are displayed. Save your column preference for future sessions.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="dev-columns" class="tab-panel">
+          <div class="article-block">
+            <div class="article-h3">Default columns in your device list</div>
+            <p class="article-p">These columns appear by default when viewing search results. You can add, remove, or reorder them using the <strong>Columns</strong> button.</p>
+            <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:8px;">
+              <span class="col-tag">Internal Device ID</span>
+              <span class="col-tag">External Device ID</span>
+              <span class="col-tag">ICCID</span>
+              <span class="col-tag">MSISDN/MDN</span>
+              <span class="col-tag">IMEI</span>
+              <span class="col-tag">IMSI</span>
+              <span class="col-tag">Status</span>
+              <span class="col-tag">CTD Usage (MB)</span>
+              <span class="col-tag">Customer Name</span>
+              <span class="col-tag">Activation Date</span>
+              <span class="col-tag">InSession Indicator</span>
+            </div>
+          </div>
+          <div class="article-block">
+            <div class="article-h3">Viewing a full device profile</div>
+            <p class="article-p">Click on any device's <strong>IMEI</strong> in the results table to open its full profile. The profile includes:</p>
+            <ul class="bullet-list">
+              <li>Profile summary and capability overview</li>
+              <li>Connectivity and network information</li>
+              <li>Hardware details and specifications</li>
+              <li>Programming and router details</li>
+              <li>Audio and voice-over details</li>
+            </ul>
+          </div>
+        </div>
+
+        <div id="dev-actions" class="tab-panel">
+          <div class="article-block">
+            <div class="article-h3">Acting on one or a few devices</div>
+            <ol class="steps">
+              <li>Search for and locate your device(s) in the results table.</li>
+              <li>Check the box next to each device you want to act on.</li>
+              <li>Select the action you want from the <strong>Actions</strong> drop-down menu.</li>
+              <li>Fill in any required information (e.g., a new rate plan name).</li>
+              <li>Confirm to process the action.</li>
+            </ol>
+          </div>
+          <div class="article-block">
+            <div class="article-h3">Acting on many devices at once (Bulk)</div>
+            <ol class="steps">
+              <li>Select the action you want from the <strong>Actions</strong> drop-down.</li>
+              <li>Download the template spreadsheet that appears.</li>
+              <li>Fill in your SIM/device data in the template.</li>
+              <li>Import and upload the completed template back into the portal.</li>
+              <li>Verify the job status on the <strong>Action Status</strong> page (if available in your plan).</li>
+            </ol>
+          </div>
+          <div class="article-block">
+            <div class="article-h3">Available actions</div>
+            <p class="article-p">Available actions depend on your carrier connection. Common actions include:</p>
+            <ul class="bullet-list">
+              <li>Activate SIM</li>
+              <li>Deactivate SIM</li>
+              <li>Suspend SIM</li>
+              <li>Restore SIM</li>
+              <li>Change Rate Plan</li>
+              <li>Terminate / Kill SIM</li>
+              <li>Send SMS</li>
+            </ul>
+          </div>
+          <div class="callout warning">
+            <div class="callout-icon">⚠️</div>
+            <div class="callout-body"><strong>Heads up on Terminate / Kill SIM</strong>This action is permanent and cannot be undone. Double-check your selection before confirming.</div>
+          </div>
+        </div>
+
+        <a href="#quick-start" class="back-top" onclick="smoothScroll(event,'quick-start')">
+          <svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"/></svg>
+          Back to top
+        </a>
+      </div>
+    </div>
+
+    <!-- SECTION 4: REPORTS -->
+    <div class="content-section" id="reports">
+      <div class="content-section-header" onclick="toggleSection('reports')">
+        <div class="section-icon icon-green">
+          <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        </div>
+        <div class="section-header-text">
+          <div class="section-header-title">Ad-Hoc Report Builder</div>
+          <div class="section-header-sub">Build, analyze, and schedule custom reports on your data</div>
+        </div>
+        <div class="section-toggle">
+          <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+      </div>
+      <div class="section-body">
+        <p class="article-intro">The Ad-Hoc Report Builder lets you construct custom reports using filters you define. Build them once and re-run them anytime, export to Excel or CSV, and even schedule automatic delivery. No coding required.</p>
+
+        <div class="tabs-row">
+          <button class="tab-btn active" onclick="switchTab(event,'rep','categories')">Report Categories</button>
+          <button class="tab-btn" onclick="switchTab(event,'rep','build')">Building a Report</button>
+          <button class="tab-btn" onclick="switchTab(event,'rep','views')">Preview &amp; Analyze</button>
+          <button class="tab-btn" onclick="switchTab(event,'rep','schedule')">Scheduling</button>
+        </div>
+
+        <div id="rep-categories" class="tab-panel active">
+          <div class="article-block">
+            <div class="article-h3">Five report categories to choose from</div>
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Category</th>
+                  <th>What it contains</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Usage by Device</strong></td>
+                  <td>All device-level usage data for a specific connection, including usage statistics per SIM.</td>
+                </tr>
+                <tr>
+                  <td><strong>Cost Allocation</strong></td>
+                  <td>Usage and cost data for devices, organized per billing cycle.</td>
+                </tr>
+                <tr>
+                  <td><strong>Monthly Usage History</strong></td>
+                  <td>Usage data on devices per billing cycle — the go-to for optimization analysis.</td>
+                </tr>
+                <tr>
+                  <td><strong>Usage by Zone Tracking</strong></td>
+                  <td>Usage combined with zone data per billing cycle. Note: devices active in multiple zones may appear on multiple lines. Not available on all connections.</td>
+                </tr>
+                <tr>
+                  <td><strong>Change Tracking by Device</strong></td>
+                  <td>Records of changes made to devices (e.g., rate plan changes, status changes). Availability depends on carrier data.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div id="rep-build" class="tab-panel">
+          <div class="article-block">
+            <div class="article-h3">Building your first report</div>
+            <ol class="steps">
+              <li>Go to <strong>Reports &amp; Notifications</strong> in the portal navigation, then select <strong>Ad-Hoc Reports</strong>.</li>
+              <li>Click <strong>Add New Report</strong> from the left-side menu.</li>
+              <li>Give your report a name and optional description.</li>
+              <li>Click <strong>+ Add Filter</strong> to set your query parameters — choose a column, set the operator (greater than, includes, equals, etc.), and enter a value.</li>
+              <li>Add as many filters as you need, then click <strong>Save</strong>.</li>
+            </ol>
+          </div>
+          <div class="callout tip">
+            <div class="callout-icon">💡</div>
+            <div class="callout-body"><strong>Start simple</strong>Build your first report with just one or two filters. Once you see results you can refine further. Saved reports can always be edited.</div>
+          </div>
+        </div>
+
+        <div id="rep-views" class="tab-panel">
+          <div class="article-block">
+            <div class="article-h3">Three ways to look at your results</div>
+            <div class="term-list">
+              <div class="term-item">
+                <div class="term-label">Preview</div>
+                <div class="term-desc">Shows the first 5 rows of your report results — a quick sanity check before exporting. Click the Excel icon to export the full report to a spreadsheet.</div>
+              </div>
+              <div class="term-item">
+                <div class="term-label">Analyze</div>
+                <div class="term-desc">A customizable pivot table view with multiple chart types. Mix dimensions and measures to slice your data any way you need. Changes update in real time as you configure.</div>
+              </div>
+              <div class="term-item">
+                <div class="term-label">History</div>
+                <div class="term-desc">Shows a log of every time this report has been run — including who received it, when, and whether it succeeded. Useful for confirming scheduled reports are running.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="rep-schedule" class="tab-panel">
+          <div class="article-block">
+            <div class="article-h3">Setting up automatic delivery</div>
+            <p class="article-p">Once a report is saved, you can schedule it to run and deliver automatically on a recurring basis.</p>
+            <ol class="steps">
+              <li>Open the report and go to its <strong>Settings</strong>.</li>
+              <li>Select the <strong>Schedule</strong> tab.</li>
+              <li>Choose your frequency: <strong>Daily</strong>, <strong>Weekly</strong>, or <strong>Monthly</strong>.</li>
+              <li>Set the time you want the report to run.</li>
+              <li>Choose the export format: <strong>Excel</strong> or <strong>CSV</strong>.</li>
+              <li>Save your schedule settings.</li>
+            </ol>
+          </div>
+          <div class="article-block">
+            <div class="article-h3">Other report settings</div>
+            <div class="term-list">
+              <div class="term-item">
+                <div class="term-label">General</div>
+                <div class="term-desc">Update the report description, toggle it active or inactive, set an expiration date, or adjust priority.</div>
+              </div>
+              <div class="term-item">
+                <div class="term-label">Permissions</div>
+                <div class="term-desc">Control which other portal users can view or edit this report.</div>
+              </div>
+              <div class="term-item">
+                <div class="term-label">Actions</div>
+                <div class="term-desc">Configure automatic device actions to fire when devices match your report's criteria — for example, automatically change rate plans for devices exceeding a usage threshold.</div>
+              </div>
+            </div>
+          </div>
+          <div class="callout note">
+            <div class="callout-icon">ℹ️</div>
+            <div class="callout-body"><strong>Report Actions</strong>The Actions tab lets you automate device changes based on report results. This is a powerful feature — if you're unsure, contact DAC support before setting up automated actions.</div>
+          </div>
+        </div>
+
+        <a href="#quick-start" class="back-top" onclick="smoothScroll(event,'quick-start')">
+          <svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"/></svg>
+          Back to top
+        </a>
+      </div>
+    </div>
+
+    <!-- NEED HELP CARD -->
+    <div style="background:white;border:1px solid var(--light-gray);border-radius:var(--radius);padding:28px 32px;display:flex;align-items:center;gap:24px;margin-top:8px;">
+      <div style="width:48px;height:48px;background:linear-gradient(135deg,var(--cyan),var(--lake));border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+        <svg width="22" height="22" viewBox="0 0 24 24" stroke="white" fill="none" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+      </div>
+      <div style="flex:1;">
+        <div style="font-size:15px;font-weight:600;color:var(--midnight);margin-bottom:4px;">Still need help?</div>
+        <div style="font-size:13px;color:var(--text-muted);line-height:1.6;">Your DAC support team is here. Reach out and we'll walk you through anything in this guide.</div>
+      </div>
+      <a href="mailto:support@dataactivationcenter.com" style="background:var(--midnight);color:white;padding:10px 20px;border-radius:var(--radius-sm);font-size:13px;font-weight:500;text-decoration:none;white-space:nowrap;transition:background 0.15s;" onmouseover="this.style.background='var(--navy)'" onmouseout="this.style.background='var(--midnight)'">Contact Support</a>
+    </div>
+
+  </main>
+</div>
+
+<!-- FOOTER -->
+<div class="help-footer">
+  DAC IQ Portal Help Center &nbsp;·&nbsp; Basic Access · Standard &nbsp;·&nbsp; 
+  <a href="https://www.dataactivationcenter.com">dataactivationcenter.com</a> &nbsp;·&nbsp; 
+  Need a different role? <a href="#">Switch guide</a>
+</div>
+
+<script>
+  function toggleSection(id) {
+    const el = document.getElementById(id);
+    el.classList.toggle('open');
+    // Update sidebar active state
+    document.querySelectorAll('.sidebar-item').forEach(i => i.classList.remove('active'));
+    const sideLink = document.querySelector(`.sidebar-item[href="#${id}"]`);
+    if (sideLink) sideLink.classList.add('active');
+  }
+
+  function openSection(e, id) {
+    e.preventDefault();
+    const el = document.getElementById(id);
+    if (!el.classList.contains('open')) el.classList.add('open');
+    setTimeout(() => el.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50);
+  }
+
+  function switchTab(e, group, panel) {
+    // Deactivate all buttons and panels in this group
+    const header = e.target.closest('.tabs-row');
+    if (!header) return;
+    header.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    e.target.classList.add('active');
+    // Find all panels with this group prefix
+    document.querySelectorAll(`[id^="${group}-"]`).forEach(p => p.classList.remove('active'));
+    const target = document.getElementById(`${group}-${panel}`);
+    if (target) target.classList.add('active');
+  }
+
+  function smoothScroll(e, id) {
+    e.preventDefault();
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    // Update sidebar
+    document.querySelectorAll('.sidebar-item').forEach(i => i.classList.remove('active'));
+    const sideLink = document.querySelector(`.sidebar-item[href="#${id}"]`);
+    if (sideLink) sideLink.classList.add('active');
+  }
+
+  // Intersection observer for sidebar highlighting
+  const sections = ['quick-start','analytics','usage','devices','reports'];
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        document.querySelectorAll('.sidebar-item').forEach(i => i.classList.remove('active'));
+        const sideLink = document.querySelector(`.sidebar-item[href="#${entry.target.id}"]`);
+        if (sideLink) sideLink.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-80px 0px -60% 0px' });
+
+  sections.forEach(id => {
+    const el = document.getElementById(id);
+    if (el) observer.observe(el);
+  });
+</script>
+
+</body>
+</html>
