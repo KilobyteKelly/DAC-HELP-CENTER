@@ -3,1257 +3,1403 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DAC IQ Portal — Help Center | Basic Access</title>
+<title>DAC IQ Portal — Help Center</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --midnight: #07303D;
-    --navy: #134B60;
-    --cyan: #3AC7D6;
-    --aqua: #A2F9F9;
-    --forest: #024534;
-    --emerald: #13A87D;
-    --lake: #2b96af;
-    --white: #FFFFFF;
-    --off-white: #F4FAFA;
-    --light-gray: #E8F4F6;
-    --mid-gray: #8AACB4;
-    --text-primary: #07303D;
-    --text-secondary: #2b5565;
-    --text-muted: #5a8696;
-    --success-bg: #E6FAF5;
-    --success-border: #13A87D;
-    --warning-bg: #FFF8EC;
-    --warning-border: #E0A020;
-    --info-bg: #E8F7FA;
-    --info-border: #3AC7D6;
-    --sidebar-w: 272px;
-    --radius: 10px;
-    --radius-sm: 6px;
-  }
+:root {
+  --midnight:#07303D;--navy:#134B60;--cyan:#3AC7D6;--aqua:#A2F9F9;
+  --forest:#024534;--emerald:#13A87D;--lake:#2b96af;
+  --off-white:#F4FAFA;--light-gray:#E8F4F6;--mid-gray:#8AACB4;
+  --text-primary:#07303D;--text-secondary:#2b5565;--text-muted:#5a8696;
+  --success-bg:#E6FAF5;--success-border:#13A87D;
+  --warning-bg:#FFF8EC;--warning-border:#E0A020;
+  --info-bg:#E8F7FA;--info-border:#3AC7D6;
+  --sidebar-w:268px;--radius:10px;--radius-sm:6px;
+  --accent:#3AC7D6;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'DM Sans',sans-serif;font-size:15px;line-height:1.7;color:var(--text-primary);background:var(--off-white);min-height:100vh;}
 
-  * { box-sizing: border-box; margin: 0; padding: 0; }
+/* ── TOP BAR ── */
+.top-bar{background:var(--midnight);color:white;padding:0 28px;height:54px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:200;border-bottom:2px solid var(--accent);}
+.brand{display:flex;align-items:center;gap:10px;}
+.brand-icon{width:26px;height:26px;background:linear-gradient(135deg,var(--cyan),var(--emerald));border-radius:6px;display:flex;align-items:center;justify-content:center;}
+.brand-icon svg{width:14px;height:14px;fill:white;}
+.brand-name{font-size:14px;font-weight:600;letter-spacing:.02em;}
+.brand-divider{width:1px;height:16px;background:rgba(255,255,255,.2);margin:0 8px;}
+.brand-section{font-size:13px;color:var(--mid-gray);}
+.top-right{display:flex;align-items:center;gap:14px;}
+.role-pill{display:flex;align-items:center;gap:7px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:20px;padding:5px 12px;font-size:12px;cursor:pointer;transition:all .2s;}
+.role-pill:hover{border-color:var(--cyan);background:rgba(58,199,214,.1);}
+.role-pill-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;}
+.role-pill-label{color:rgba(255,255,255,.85);font-weight:500;}
+.role-pill-change{color:var(--cyan);font-size:11px;margin-left:4px;}
+.top-bar-btn{background:none;border:1px solid rgba(255,255,255,.2);border-radius:var(--radius-sm);color:rgba(255,255,255,.7);padding:5px 12px;font-size:12px;cursor:pointer;font-family:inherit;transition:all .2s;}
+.top-bar-btn:hover{border-color:var(--cyan);color:white;}
 
-  body {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 15px;
-    line-height: 1.7;
-    color: var(--text-primary);
-    background: var(--off-white);
-    min-height: 100vh;
-  }
+/* ── LANDING PAGE ── */
+#landing{min-height:100vh;display:flex;flex-direction:column;}
+.landing-hero{background:linear-gradient(180deg,var(--midnight) 0%,var(--navy) 100%);padding:64px 40px 52px;text-align:center;position:relative;overflow:hidden;}
+.landing-hero::before{content:'';position:absolute;top:-80px;left:-80px;width:400px;height:400px;background:radial-gradient(circle,rgba(58,199,214,.12) 0%,transparent 70%);border-radius:50%;}
+.landing-hero::after{content:'';position:absolute;bottom:-100px;right:-60px;width:500px;height:500px;background:radial-gradient(circle,rgba(19,168,125,.1) 0%,transparent 70%);border-radius:50%;}
+.landing-eyebrow{font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--cyan);margin-bottom:14px;}
+.landing-title{font-size:38px;font-weight:600;color:white;line-height:1.15;margin-bottom:14px;}
+.landing-title span{color:var(--cyan);}
+.landing-sub{font-size:16px;color:rgba(255,255,255,.65);max-width:520px;margin:0 auto 40px;line-height:1.65;}
+.landing-prompt{font-size:13px;font-weight:600;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.1em;margin-bottom:20px;}
+.role-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;max-width:900px;margin:0 auto;padding:0 24px 60px;}
+.role-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.15);border-radius:14px;padding:28px 26px;cursor:pointer;transition:all .25s;text-align:left;position:relative;overflow:hidden;}
+.role-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(58,199,214,.05),transparent);opacity:0;transition:opacity .25s;}
+.role-card:hover{border-color:rgba(58,199,214,.8);transform:translateY(-3px);box-shadow:0 12px 40px rgba(0,0,0,.5);background:rgba(255,255,255,.1);}
+.role-card:hover::before{opacity:1;}
+.role-card-badge{display:inline-flex;align-items:center;gap:6px;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:3px 9px;border-radius:12px;margin-bottom:14px;}
+.badge-standard{background:rgba(43,150,175,.2);color:#A2F9F9;border:1px solid rgba(43,150,175,.3);}
+.badge-enterprise{background:rgba(19,168,125,.2);color:#A2F9F9;border:1px solid rgba(19,168,125,.3);}
+.role-card-role{font-size:18px;font-weight:700;color:#ffffff;margin-bottom:8px;text-shadow:0 1px 3px rgba(0,0,0,0.3);}
+.role-card-desc{font-size:13px;color:rgba(255,255,255,.8);line-height:1.6;margin-bottom:18px;}
+.role-card-features{display:flex;flex-wrap:wrap;gap:6px;}
+.feat-tag{font-size:11px;background:rgba(255,255,255,.12);color:rgba(255,255,255,.85);border-radius:10px;padding:3px 9px;border:1px solid rgba(255,255,255,.1);}
+.role-card-arrow{position:absolute;top:28px;right:26px;width:28px;height:28px;border-radius:50%;background:rgba(58,199,214,.15);display:flex;align-items:center;justify-content:center;transition:all .2s;}
+.role-card-arrow svg{width:12px;height:12px;stroke:var(--cyan);fill:none;stroke-width:2.5;}
+.role-card:hover .role-card-arrow{background:var(--cyan);transform:translateX(2px);}
+.role-card:hover .role-card-arrow svg{stroke:var(--midnight);}
 
-  /* TOP HEADER */
-  .top-bar {
-    background: var(--midnight);
-    color: white;
-    padding: 0 32px;
-    height: 56px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    border-bottom: 2px solid var(--cyan);
-  }
-  .top-bar-brand {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-  .brand-dot {
-    width: 28px; height: 28px;
-    background: linear-gradient(135deg, var(--cyan), var(--emerald));
-    border-radius: 6px;
-    display: flex; align-items: center; justify-content: center;
-  }
-  .brand-dot svg { width: 16px; height: 16px; fill: white; }
-  .brand-name {
-    font-size: 15px;
-    font-weight: 600;
-    color: white;
-    letter-spacing: 0.02em;
-  }
-  .brand-sub {
-    font-size: 12px;
-    color: var(--mid-gray);
-    margin-left: 4px;
-  }
-  .top-bar-right {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-  }
-  .role-badge {
-    background: rgba(58, 199, 214, 0.15);
-    border: 1px solid rgba(58, 199, 214, 0.4);
-    color: var(--aqua);
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    padding: 4px 10px;
-    border-radius: 20px;
-  }
-  .search-bar {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    background: rgba(255,255,255,0.08);
-    border: 1px solid rgba(255,255,255,0.15);
-    border-radius: var(--radius-sm);
-    padding: 6px 12px;
-    cursor: text;
-    transition: border-color 0.2s;
-  }
-  .search-bar:hover { border-color: rgba(58,199,214,0.5); }
-  .search-bar svg { width: 14px; height: 14px; stroke: var(--mid-gray); fill: none; }
-  .search-bar span { font-size: 13px; color: var(--mid-gray); }
+/* ── MAIN APP LAYOUT ── */
+#app{display:none;}
+.app-layout{display:flex;max-width:1240px;margin:0 auto;padding:0 24px;gap:28px;align-items:flex-start;}
+.sidebar{width:var(--sidebar-w);flex-shrink:0;position:sticky;top:70px;padding:24px 0;max-height:calc(100vh - 70px);overflow-y:auto;}
+.sidebar-label{font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--text-muted);padding:0 10px 7px;margin-top:18px;}
+.sidebar-label:first-child{margin-top:0;}
+.sidebar-link{display:flex;align-items:center;gap:9px;padding:7px 10px;border-radius:var(--radius-sm);font-size:13px;color:var(--text-secondary);text-decoration:none;cursor:pointer;transition:all .15s;border-left:3px solid transparent;margin-bottom:1px;}
+.sidebar-link:hover{background:var(--light-gray);color:var(--navy);}
+.sidebar-link.active{background:var(--info-bg);color:var(--navy);font-weight:500;}
+.sidebar-link svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:1.8;flex-shrink:0;}
+.sidebar-link .s-tag{margin-left:auto;font-size:10px;padding:1px 6px;border-radius:8px;font-weight:600;white-space:nowrap;}
+.s-tag-ent{background:#E6FAF5;color:var(--emerald);border:1px solid rgba(19,168,125,.25);}
+.s-tag-adm{background:var(--info-bg);color:var(--lake);border:1px solid rgba(43,150,175,.25);}
 
-  /* LAYOUT */
-  .layout {
-    display: flex;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 24px;
-    gap: 32px;
-    align-items: flex-start;
-  }
+/* ── MAIN CONTENT ── */
+.main-content{flex:1;padding:26px 0 72px;min-width:0;}
 
-  /* SIDEBAR */
-  .sidebar {
-    width: var(--sidebar-w);
-    flex-shrink: 0;
-    position: sticky;
-    top: 72px;
-    padding: 28px 0;
-    max-height: calc(100vh - 72px);
-    overflow-y: auto;
-  }
-  .sidebar-section-label {
-    font-size: 10px;
-    font-weight: 600;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--text-muted);
-    padding: 0 12px 8px;
-    margin-top: 20px;
-  }
-  .sidebar-section-label:first-child { margin-top: 0; }
-  .sidebar-item {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 8px 12px;
-    border-radius: var(--radius-sm);
-    cursor: pointer;
-    font-size: 14px;
-    color: var(--text-secondary);
-    text-decoration: none;
-    transition: all 0.15s;
-    border-left: 3px solid transparent;
-    margin-bottom: 1px;
-  }
-  .sidebar-item:hover {
-    background: var(--light-gray);
-    color: var(--navy);
-  }
-  .sidebar-item.active {
-    background: var(--info-bg);
-    color: var(--navy);
-    border-left-color: var(--cyan);
-    font-weight: 500;
-  }
-  .sidebar-item svg {
-    width: 16px; height: 16px;
-    flex-shrink: 0;
-    stroke: currentColor;
-    fill: none;
-    stroke-width: 1.8;
-  }
-  .sidebar-item .item-count {
-    margin-left: auto;
-    font-size: 11px;
-    background: var(--light-gray);
-    color: var(--text-muted);
-    padding: 1px 7px;
-    border-radius: 10px;
-    font-family: 'DM Mono', monospace;
-  }
+/* ── WELCOME BANNER ── */
+.welcome-banner{border-radius:14px;padding:28px 32px;margin-bottom:28px;color:white;position:relative;overflow:hidden;}
+.wb-eyebrow{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;margin-bottom:7px;opacity:.8;}
+.wb-title{font-size:24px;font-weight:600;line-height:1.2;margin-bottom:8px;}
+.wb-desc{font-size:13px;opacity:.7;max-width:580px;line-height:1.65;}
+.wb-chips{display:flex;gap:8px;margin-top:18px;flex-wrap:wrap;}
+.wb-chip{display:flex;align-items:center;gap:6px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);border-radius:20px;padding:4px 11px;font-size:11px;color:rgba(255,255,255,.85);font-weight:500;}
+.wb-dot{width:5px;height:5px;border-radius:50%;flex-shrink:0;}
 
-  /* MAIN CONTENT */
-  .main {
-    flex: 1;
-    padding: 28px 0 64px;
-    min-width: 0;
-  }
+/* ── QUICK START GRID ── */
+.qs-title{font-size:17px;font-weight:600;color:var(--midnight);margin-bottom:4px;}
+.qs-sub{font-size:13px;color:var(--text-muted);margin-bottom:14px;}
+.qs-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;margin-bottom:32px;}
+.qs-card{background:white;border:1px solid var(--light-gray);border-radius:var(--radius);padding:15px 17px;cursor:pointer;transition:all .2s;text-decoration:none;display:block;}
+.qs-card:hover{transform:translateY(-2px);box-shadow:0 4px 18px rgba(58,199,214,.12);}
+.qs-icon{width:32px;height:32px;border-radius:7px;display:flex;align-items:center;justify-content:center;margin-bottom:10px;}
+.qs-icon svg{width:15px;height:15px;stroke:white;fill:none;stroke-width:2;}
+.qs-card-title{font-size:13px;font-weight:600;color:var(--text-primary);margin-bottom:3px;}
+.qs-card-desc{font-size:11px;color:var(--text-muted);line-height:1.5;}
 
-  /* WELCOME HERO */
-  .welcome-card {
-    background: linear-gradient(135deg, var(--midnight) 0%, var(--navy) 100%);
-    border-radius: 14px;
-    padding: 32px 36px;
-    margin-bottom: 32px;
-    color: white;
-    position: relative;
-    overflow: hidden;
-  }
-  .welcome-card::before {
-    content: '';
-    position: absolute;
-    top: -40px; right: -40px;
-    width: 200px; height: 200px;
-    background: radial-gradient(circle, rgba(58,199,214,0.15) 0%, transparent 70%);
-    border-radius: 50%;
-  }
-  .welcome-card::after {
-    content: '';
-    position: absolute;
-    bottom: -60px; left: 30%;
-    width: 280px; height: 280px;
-    background: radial-gradient(circle, rgba(19,168,125,0.1) 0%, transparent 70%);
-    border-radius: 50%;
-  }
-  .welcome-eyebrow {
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--cyan);
-    margin-bottom: 8px;
-  }
-  .welcome-title {
-    font-size: 26px;
-    font-weight: 600;
-    line-height: 1.2;
-    margin-bottom: 10px;
-  }
-  .welcome-desc {
-    font-size: 14px;
-    color: rgba(255,255,255,0.7);
-    max-width: 560px;
-    line-height: 1.6;
-  }
-  .welcome-features {
-    display: flex;
-    gap: 12px;
-    margin-top: 22px;
-    flex-wrap: wrap;
-  }
-  .feature-chip {
-    display: flex;
-    align-items: center;
-    gap: 7px;
-    background: rgba(255,255,255,0.08);
-    border: 1px solid rgba(255,255,255,0.12);
-    border-radius: 20px;
-    padding: 5px 12px;
-    font-size: 12px;
-    color: rgba(255,255,255,0.85);
-    font-weight: 500;
-  }
-  .feature-chip-dot {
-    width: 6px; height: 6px;
-    border-radius: 50%;
-    background: var(--cyan);
-    flex-shrink: 0;
-  }
+/* ── SECTION DIVIDER ── */
+.divider{height:1px;background:var(--light-gray);margin:8px 0 26px;}
 
-  /* QUICK START */
-  .quick-start {
-    margin-bottom: 36px;
-  }
-  .section-header {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 16px;
-  }
-  .section-title {
-    font-size: 18px;
-    font-weight: 600;
-    color: var(--midnight);
-  }
-  .section-sub {
-    font-size: 13px;
-    color: var(--text-muted);
-    margin-top: 2px;
-  }
-  .quick-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    gap: 14px;
-  }
-  .quick-card {
-    background: white;
-    border: 1px solid var(--light-gray);
-    border-radius: var(--radius);
-    padding: 18px 20px;
-    cursor: pointer;
-    transition: all 0.2s;
-    text-decoration: none;
-    display: block;
-  }
-  .quick-card:hover {
-    border-color: var(--cyan);
-    box-shadow: 0 4px 16px rgba(58,199,214,0.12);
-    transform: translateY(-2px);
-  }
-  .quick-card-icon {
-    width: 36px; height: 36px;
-    border-radius: 8px;
-    display: flex; align-items: center; justify-content: center;
-    margin-bottom: 12px;
-  }
-  .quick-card-icon svg {
-    width: 18px; height: 18px;
-    stroke: white; fill: none; stroke-width: 2;
-  }
-  .icon-teal { background: linear-gradient(135deg, var(--cyan), var(--lake)); }
-  .icon-green { background: linear-gradient(135deg, var(--emerald), var(--forest)); }
-  .icon-navy { background: linear-gradient(135deg, var(--lake), var(--navy)); }
-  .quick-card-title {
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--text-primary);
-    margin-bottom: 4px;
-  }
-  .quick-card-desc {
-    font-size: 12px;
-    color: var(--text-muted);
-    line-height: 1.5;
-  }
+/* ── CONTENT SECTIONS ── */
+.content-section{margin-bottom:36px;scroll-margin-top:78px;}
+.cs-header{display:flex;align-items:center;gap:12px;padding:14px 18px;background:white;border:1px solid var(--light-gray);border-radius:var(--radius) var(--radius) 0 0;cursor:pointer;user-select:none;transition:background .15s;}
+.cs-header:hover{background:var(--info-bg);}
+.cs-icon{width:30px;height:30px;border-radius:7px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.cs-icon svg{width:15px;height:15px;stroke:white;fill:none;stroke-width:2;}
+.cs-header-text{flex:1;}
+.cs-title{font-size:15px;font-weight:600;color:var(--midnight);}
+.cs-subtitle{font-size:12px;color:var(--text-muted);margin-top:1px;}
+.cs-badge{font-size:10px;font-weight:700;padding:2px 8px;border-radius:10px;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap;}
+.cs-toggle{width:22px;height:22px;border-radius:50%;background:var(--light-gray);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.cs-toggle svg{width:11px;height:11px;stroke:var(--text-muted);fill:none;stroke-width:2.5;transition:transform .25s;}
+.content-section.open .cs-toggle svg{transform:rotate(180deg);}
+.cs-body{background:white;border:1px solid var(--light-gray);border-top:none;border-radius:0 0 var(--radius) var(--radius);display:none;padding:26px 26px 30px;}
+.content-section.open .cs-body{display:block;animation:fadeIn .2s ease;}
 
-  /* SECTION DIVIDER */
-  .section-divider {
-    height: 1px;
-    background: var(--light-gray);
-    margin: 36px 0;
-  }
+/* ── ARTICLE CONTENT ── */
+.article-intro{font-size:14px;color:var(--text-secondary);line-height:1.75;margin-bottom:22px;padding-bottom:18px;border-bottom:1px solid var(--light-gray);}
+.article-block{margin-bottom:26px;}
+.article-block:last-child{margin-bottom:0;}
+.ah3{font-size:14px;font-weight:600;color:var(--midnight);margin-bottom:11px;display:flex;align-items:center;gap:8px;}
+.ah3::before{content:'';display:inline-block;width:3px;height:15px;border-radius:2px;flex-shrink:0;}
+.article-p{font-size:14px;color:var(--text-secondary);line-height:1.75;margin-bottom:11px;}
 
-  /* CONTENT SECTIONS */
-  .content-section {
-    margin-bottom: 40px;
-    scroll-margin-top: 80px;
-  }
-  .content-section-header {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 16px 20px;
-    background: white;
-    border: 1px solid var(--light-gray);
-    border-radius: var(--radius) var(--radius) 0 0;
-    cursor: pointer;
-    user-select: none;
-    transition: background 0.15s;
-    border-bottom: 2px solid var(--cyan);
-  }
-  .content-section-header:hover { background: var(--info-bg); }
-  .section-icon {
-    width: 32px; height: 32px;
-    border-radius: 7px;
-    display: flex; align-items: center; justify-content: center;
-    flex-shrink: 0;
-  }
-  .section-icon svg { width: 16px; height: 16px; stroke: white; fill: none; stroke-width: 2; }
-  .section-header-text { flex: 1; }
-  .section-header-title {
-    font-size: 16px;
-    font-weight: 600;
-    color: var(--midnight);
-  }
-  .section-header-sub {
-    font-size: 12px;
-    color: var(--text-muted);
-    margin-top: 1px;
-  }
-  .section-toggle {
-    width: 24px; height: 24px;
-    border-radius: 50%;
-    background: var(--light-gray);
-    display: flex; align-items: center; justify-content: center;
-    transition: all 0.2s;
-    flex-shrink: 0;
-  }
-  .section-toggle svg { width: 12px; height: 12px; stroke: var(--text-muted); fill: none; stroke-width: 2.5; transition: transform 0.25s; }
-  .content-section.open .section-toggle svg { transform: rotate(180deg); }
-  .section-body {
-    background: white;
-    border: 1px solid var(--light-gray);
-    border-top: none;
-    border-radius: 0 0 var(--radius) var(--radius);
-    display: none;
-    padding: 28px 28px 32px;
-  }
-  .content-section.open .section-body { display: block; }
+/* ── IMAGE PLACEHOLDER ── */
+.img-placeholder{border:2px dashed var(--cyan);border-radius:var(--radius);padding:24px 20px;margin:16px 0;background:var(--info-bg);display:flex;align-items:center;gap:16px;}
+.img-ph-icon{width:44px;height:44px;background:rgba(58,199,214,.15);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.img-ph-icon svg{width:22px;height:22px;stroke:var(--lake);fill:none;stroke-width:1.8;}
+.img-ph-text{}
+.img-ph-label{font-size:11px;font-weight:600;color:var(--lake);text-transform:uppercase;letter-spacing:.08em;margin-bottom:3px;}
+.img-ph-desc{font-size:13px;color:var(--text-secondary);line-height:1.5;}
+.img-ph-tag{display:inline-block;background:rgba(58,199,214,.15);color:var(--lake);font-size:10px;font-family:'DM Mono',monospace;border-radius:4px;padding:1px 7px;margin-top:5px;}
 
-  /* ARTICLE STYLES */
-  .article-intro {
-    font-size: 14px;
-    color: var(--text-secondary);
-    line-height: 1.7;
-    margin-bottom: 24px;
-    padding-bottom: 20px;
-    border-bottom: 1px solid var(--light-gray);
-  }
+/* ── STEPS ── */
+.steps{list-style:none;counter-reset:sc;}
+.steps li{counter-increment:sc;display:flex;gap:13px;margin-bottom:11px;font-size:14px;color:var(--text-secondary);line-height:1.65;}
+.steps li::before{content:counter(sc);width:23px;height:23px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;margin-top:2px;font-family:'DM Mono',monospace;color:white;}
 
-  .article-block { margin-bottom: 28px; }
-  .article-block:last-child { margin-bottom: 0; }
+/* ── BULLET LIST ── */
+.bullet-list{list-style:none;}
+.bullet-list li{display:flex;gap:9px;margin-bottom:7px;font-size:14px;color:var(--text-secondary);line-height:1.65;}
+.bullet-list li::before{content:'';width:5px;height:5px;border-radius:50%;flex-shrink:0;margin-top:9px;}
 
-  .article-h3 {
-    font-size: 15px;
-    font-weight: 600;
-    color: var(--midnight);
-    margin-bottom: 12px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  .article-h3::before {
-    content: '';
-    display: inline-block;
-    width: 3px;
-    height: 16px;
-    background: var(--cyan);
-    border-radius: 2px;
-    flex-shrink: 0;
-  }
+/* ── TERM LIST ── */
+.term-item{display:flex;gap:12px;padding:9px 0;border-bottom:1px solid var(--light-gray);font-size:14px;}
+.term-item:last-child{border-bottom:none;}
+.term-label{font-weight:600;color:var(--midnight);min-width:150px;flex-shrink:0;font-family:'DM Mono',monospace;font-size:12px;padding-top:2px;}
+.term-desc{color:var(--text-secondary);line-height:1.65;}
 
-  .article-p {
-    font-size: 14px;
-    color: var(--text-secondary);
-    line-height: 1.75;
-    margin-bottom: 12px;
-  }
+/* ── CALLOUTS ── */
+.callout{border-radius:var(--radius-sm);padding:13px 15px;margin:14px 0;display:flex;gap:11px;font-size:13px;line-height:1.65;}
+.callout-icon{font-size:15px;flex-shrink:0;margin-top:1px;}
+.callout-body strong{display:block;margin-bottom:2px;font-size:13px;}
+.callout.tip{background:var(--success-bg);border-left:3px solid var(--success-border);color:var(--forest);}
+.callout.note{background:var(--info-bg);border-left:3px solid var(--info-border);color:var(--navy);}
+.callout.warning{background:var(--warning-bg);border-left:3px solid var(--warning-border);color:#5c3a00;}
 
-  /* STEPS */
-  .steps { list-style: none; counter-reset: step-counter; }
-  .steps li {
-    counter-increment: step-counter;
-    display: flex;
-    gap: 14px;
-    margin-bottom: 12px;
-    font-size: 14px;
-    color: var(--text-secondary);
-    line-height: 1.6;
-  }
-  .steps li::before {
-    content: counter(step-counter);
-    width: 24px; height: 24px;
-    background: var(--cyan);
-    color: var(--midnight);
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 11px;
-    font-weight: 700;
-    flex-shrink: 0;
-    margin-top: 2px;
-    font-family: 'DM Mono', monospace;
-  }
+/* ── TABS ── */
+.tabs-row{display:flex;gap:3px;border-bottom:2px solid var(--light-gray);margin-bottom:18px;flex-wrap:wrap;}
+.tab-btn{padding:7px 14px;font-size:13px;font-weight:500;color:var(--text-muted);background:none;border:none;border-bottom:2px solid transparent;margin-bottom:-2px;cursor:pointer;border-radius:var(--radius-sm) var(--radius-sm) 0 0;transition:all .15s;font-family:inherit;}
+.tab-btn:hover{color:var(--navy);background:var(--light-gray);}
+.tab-btn.active{color:var(--navy);font-weight:600;}
+.tab-panel{display:none;}
+.tab-panel.active{display:block;}
 
-  /* BULLET LIST */
-  .bullet-list { list-style: none; }
-  .bullet-list li {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 8px;
-    font-size: 14px;
-    color: var(--text-secondary);
-    line-height: 1.6;
-  }
-  .bullet-list li::before {
-    content: '';
-    width: 6px; height: 6px;
-    border-radius: 50%;
-    background: var(--emerald);
-    flex-shrink: 0;
-    margin-top: 8px;
-  }
+/* ── DATA TABLE ── */
+.data-table{width:100%;border-collapse:collapse;font-size:13px;margin:11px 0;}
+.data-table th{background:var(--midnight);color:white;padding:8px 13px;text-align:left;font-weight:600;font-size:11px;letter-spacing:.05em;text-transform:uppercase;}
+.data-table th:first-child{border-radius:5px 0 0 0;}
+.data-table th:last-child{border-radius:0 5px 0 0;}
+.data-table td{padding:9px 13px;border-bottom:1px solid var(--light-gray);color:var(--text-secondary);vertical-align:top;line-height:1.5;}
+.data-table tr:last-child td{border-bottom:none;}
+.data-table tr:nth-child(even) td{background:var(--off-white);}
 
-  /* TERM LIST (key-value style) */
-  .term-list { }
-  .term-item {
-    display: flex;
-    gap: 12px;
-    padding: 10px 0;
-    border-bottom: 1px solid var(--light-gray);
-    font-size: 14px;
-  }
-  .term-item:last-child { border-bottom: none; }
-  .term-label {
-    font-weight: 600;
-    color: var(--midnight);
-    min-width: 160px;
-    flex-shrink: 0;
-    font-family: 'DM Mono', monospace;
-    font-size: 12px;
-    padding-top: 2px;
-  }
-  .term-desc { color: var(--text-secondary); line-height: 1.6; }
+/* ── COL TAGS ── */
+.col-tag{display:inline-block;background:var(--light-gray);color:var(--text-secondary);border-radius:4px;padding:1px 6px;font-family:'DM Mono',monospace;font-size:11px;margin:2px;}
 
-  /* CALLOUT BOXES */
-  .callout {
-    border-radius: var(--radius-sm);
-    padding: 14px 16px;
-    margin: 16px 0;
-    display: flex;
-    gap: 12px;
-    font-size: 13px;
-    line-height: 1.6;
-  }
-  .callout-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
-  .callout-body strong { display: block; margin-bottom: 2px; font-size: 13px; }
-  .callout.tip { background: var(--success-bg); border-left: 3px solid var(--success-border); color: var(--forest); }
-  .callout.note { background: var(--info-bg); border-left: 3px solid var(--info-border); color: var(--navy); }
-  .callout.warning { background: var(--warning-bg); border-left: 3px solid var(--warning-border); color: #5c3a00; }
+/* ── BACK TO TOP ── */
+.back-top{display:inline-flex;align-items:center;gap:5px;color:var(--lake);font-size:12px;font-weight:500;text-decoration:none;margin-top:18px;padding:5px 11px;border-radius:20px;border:1px solid rgba(43,150,175,.25);transition:all .15s;cursor:pointer;}
+.back-top:hover{background:var(--info-bg);}
+.back-top svg{width:11px;height:11px;stroke:currentColor;fill:none;stroke-width:2.5;}
 
-  /* DATA TABLE */
-  .data-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 13px;
-    margin: 12px 0;
-  }
-  .data-table th {
-    background: var(--midnight);
-    color: white;
-    padding: 9px 14px;
-    text-align: left;
-    font-weight: 600;
-    font-size: 11px;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-  }
-  .data-table th:first-child { border-radius: 6px 0 0 0; }
-  .data-table th:last-child { border-radius: 0 6px 0 0; }
-  .data-table td {
-    padding: 9px 14px;
-    border-bottom: 1px solid var(--light-gray);
-    color: var(--text-secondary);
-    vertical-align: top;
-    line-height: 1.5;
-  }
-  .data-table tr:last-child td { border-bottom: none; }
-  .data-table tr:nth-child(even) td { background: var(--off-white); }
+/* ── SUPPORT FOOTER CARD ── */
+.support-card{background:white;border:1px solid var(--light-gray);border-radius:var(--radius);padding:24px 28px;display:flex;align-items:center;gap:20px;margin-top:8px;}
+.support-icon{width:44px;height:44px;border-radius:9px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.support-icon svg{width:20px;height:20px;stroke:white;fill:none;stroke-width:2;}
+.support-text-title{font-size:14px;font-weight:600;color:var(--midnight);margin-bottom:3px;}
+.support-text-sub{font-size:12px;color:var(--text-muted);line-height:1.5;}
+.support-btn{color:white;padding:9px 18px;border-radius:var(--radius-sm);font-size:12px;font-weight:500;text-decoration:none;white-space:nowrap;}
 
-  /* COLUMN TAG */
-  .col-tag {
-    display: inline-block;
-    background: var(--light-gray);
-    color: var(--text-secondary);
-    border-radius: 4px;
-    padding: 1px 7px;
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    margin: 2px 2px 2px 0;
-  }
+/* ── PAGE FOOTER ── */
+.page-footer{background:var(--midnight);color:rgba(255,255,255,.45);text-align:center;padding:22px;font-size:12px;margin-top:60px;}
+.page-footer a{color:var(--cyan);text-decoration:none;}
 
-  /* SUBSECTION TABS */
-  .tabs-row {
-    display: flex;
-    gap: 4px;
-    border-bottom: 2px solid var(--light-gray);
-    margin-bottom: 20px;
-  }
-  .tab-btn {
-    padding: 8px 16px;
-    font-size: 13px;
-    font-weight: 500;
-    color: var(--text-muted);
-    background: none;
-    border: none;
-    border-bottom: 2px solid transparent;
-    margin-bottom: -2px;
-    cursor: pointer;
-    border-radius: var(--radius-sm) var(--radius-sm) 0 0;
-    transition: all 0.15s;
-  }
-  .tab-btn:hover { color: var(--navy); background: var(--light-gray); }
-  .tab-btn.active { color: var(--navy); border-bottom-color: var(--cyan); font-weight: 600; }
-  .tab-panel { display: none; }
-  .tab-panel.active { display: block; }
+/* ── ROLE-SPECIFIC COLORS ── */
+/* BA-Standard: Cyan/Teal */
+[data-role="bas"] .sidebar-link.active{background:var(--info-bg);border-left-color:var(--cyan);}
+[data-role="bas"] .cs-header{border-bottom:2px solid var(--cyan);}
+[data-role="bas"] .tab-btn.active{border-bottom-color:var(--cyan);}
+[data-role="bas"] .ah3::before{background:var(--cyan);}
+[data-role="bas"] .steps li::before{background:var(--cyan);color:var(--midnight);}
+[data-role="bas"] .bullet-list li::before{background:var(--cyan);}
+/* BA-Enterprise: Emerald */
+[data-role="bae"] .sidebar-link.active{background:var(--success-bg);border-left-color:var(--emerald);}
+[data-role="bae"] .cs-header{border-bottom:2px solid var(--emerald);}
+[data-role="bae"] .tab-btn.active{border-bottom-color:var(--emerald);}
+[data-role="bae"] .ah3::before{background:var(--emerald);}
+[data-role="bae"] .steps li::before{background:var(--emerald);}
+[data-role="bae"] .bullet-list li::before{background:var(--emerald);}
+/* CSP-Standard: Lake */
+[data-role="csps"] .sidebar-link.active{background:var(--info-bg);border-left-color:var(--lake);}
+[data-role="csps"] .cs-header{border-bottom:2px solid var(--lake);}
+[data-role="csps"] .tab-btn.active{border-bottom-color:var(--lake);}
+[data-role="csps"] .ah3::before{background:var(--lake);}
+[data-role="csps"] .steps li::before{background:var(--lake);}
+[data-role="csps"] .bullet-list li::before{background:var(--lake);}
+/* CSP-Enterprise: Dual */
+[data-role="cspe"] .sidebar-link.active{background:var(--success-bg);border-left-color:var(--emerald);}
+[data-role="cspe"] .cs-header{border-bottom:2px solid var(--emerald);}
+[data-role="cspe"] .tab-btn.active{border-bottom-color:var(--emerald);}
+[data-role="cspe"] .ah3::before{background:var(--emerald);}
+[data-role="cspe"] .steps li::before{background:var(--emerald);}
+[data-role="cspe"] .bullet-list li::before{background:var(--emerald);}
 
-  /* SEARCH */
-  .page-search-wrap {
-    position: relative;
-    margin-bottom: 28px;
-  }
-  .page-search {
-    width: 100%;
-    padding: 12px 16px 12px 42px;
-    border: 1.5px solid var(--light-gray);
-    border-radius: var(--radius);
-    font-family: 'DM Sans', sans-serif;
-    font-size: 14px;
-    color: var(--text-primary);
-    background: white;
-    outline: none;
-    transition: border-color 0.2s;
-  }
-  .page-search:focus { border-color: var(--cyan); }
-  .page-search::placeholder { color: var(--text-muted); }
-  .page-search-icon {
-    position: absolute;
-    left: 14px; top: 50%;
-    transform: translateY(-50%);
-    width: 16px; height: 16px;
-    stroke: var(--mid-gray); fill: none; stroke-width: 2;
-  }
-
-  /* BACK TO TOP */
-  .back-top {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    color: var(--lake);
-    font-size: 13px;
-    font-weight: 500;
-    text-decoration: none;
-    margin-top: 20px;
-    padding: 6px 12px;
-    border-radius: 20px;
-    border: 1px solid rgba(43,150,175,0.25);
-    transition: all 0.15s;
-  }
-  .back-top:hover { background: var(--info-bg); border-color: var(--lake); }
-  .back-top svg { width: 12px; height: 12px; stroke: currentColor; fill: none; stroke-width: 2.5; }
-
-  /* FOOTER */
-  .help-footer {
-    background: var(--midnight);
-    color: rgba(255,255,255,0.5);
-    text-align: center;
-    padding: 24px;
-    font-size: 12px;
-    margin-top: 60px;
-  }
-  .help-footer a { color: var(--cyan); text-decoration: none; }
-
-  /* RESPONSIVE */
-  @media (max-width: 768px) {
-    .sidebar { display: none; }
-    .layout { padding: 0 16px; }
-    .welcome-card { padding: 24px 22px; }
-    .welcome-title { font-size: 20px; }
-    .quick-grid { grid-template-columns: 1fr 1fr; }
-  }
-
-  /* ANIMATION */
-  .section-body { animation: fadeIn 0.2s ease; }
-  @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeIn{from{opacity:0;transform:translateY(4px);}to{opacity:1;transform:translateY(0);}}
+@keyframes slideUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+.role-card{animation:slideUp .4s ease both;}
+.role-card:nth-child(2){animation-delay:.08s;}
+.role-card:nth-child(3){animation-delay:.16s;}
+.role-card:nth-child(4){animation-delay:.24s;}
+@media(max-width:768px){.sidebar{display:none;}.app-layout{padding:0 16px;}.landing-hero{padding:40px 20px 32px;}.landing-title{font-size:26px;}.role-cards{grid-template-columns:1fr;padding:0 16px 40px;}.qs-grid{grid-template-columns:1fr 1fr;}}
 </style>
 </head>
 <body>
 
-<!-- TOP HEADER -->
-<div class="top-bar">
-  <div class="top-bar-brand">
-    <div class="brand-dot">
-      <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-    </div>
+<!-- ═══════════════════════════════════════════
+     TOP BAR
+════════════════════════════════════════════ -->
+<div class="top-bar" id="topbar">
+  <div class="brand">
+    <div class="brand-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
     <span class="brand-name">DAC IQ Portal</span>
-    <span class="brand-sub">/ Help Center</span>
+    <div class="brand-divider"></div>
+    <span class="brand-section">Help Center</span>
   </div>
-  <div class="top-bar-right">
-    <div class="search-bar">
-      <svg viewBox="0 0 24 24" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-      <span>Search help...</span>
+  <div class="top-right">
+    <div class="role-pill" id="role-pill" onclick="switchRole()" style="display:none;">
+      <div class="role-pill-dot" id="role-pill-dot"></div>
+      <span class="role-pill-label" id="role-pill-label"></span>
+      <span class="role-pill-change">↩ Switch</span>
     </div>
-    <div class="role-badge">Basic Access · Standard</div>
   </div>
 </div>
 
-<!-- MAIN LAYOUT -->
-<div class="layout">
+<!-- ═══════════════════════════════════════════
+     LANDING PAGE — ROLE SELECTOR
+════════════════════════════════════════════ -->
+<div id="landing">
+  <div class="landing-hero">
+    <div class="landing-eyebrow">DAC IQ Portal</div>
+    <div class="landing-title">Welcome to the<br><span>Help Center</span></div>
+    <div class="landing-sub">Step-by-step guidance for every feature available to you. Select your role below to see only what applies to you.</div>
+  </div>
+  <div style="background:linear-gradient(180deg,var(--navy) 0%,var(--midnight) 100%);padding-top:32px;padding-bottom:48px;">
+    <div class="landing-prompt" style="text-align:center;color:rgba(255,255,255,0.5);">Select your role to get started</div>
+    <div class="role-cards">
+
+      <div class="role-card" onclick="selectRole('bas')">
+        <div class="role-card-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div>
+        <div class="role-card-badge badge-standard">Standard Plan</div>
+        <div class="role-card-role">Basic Access</div>
+        <div class="role-card-desc">Monitor your devices, track usage, and run custom reports. Clean and straightforward access to the essentials.</div>
+        <div class="role-card-features">
+          <span class="feat-tag">Analytics Dashboard</span>
+          <span class="feat-tag">Usage Monitoring</span>
+          <span class="feat-tag">Device Actions</span>
+          <span class="feat-tag">Ad-Hoc Reports</span>
+        </div>
+      </div>
+
+      <div class="role-card" onclick="selectRole('bae')">
+        <div class="role-card-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div>
+        <div class="role-card-badge badge-enterprise">Enterprise CMP</div>
+        <div class="role-card-role">Basic Access <span style="opacity:.6;font-weight:400">+</span> Enterprise</div>
+        <div class="role-card-desc">Everything in Standard plus automated Device Alerts and Customer Setup to manage your downstream hierarchy.</div>
+        <div class="role-card-features">
+          <span class="feat-tag">All Standard Features</span>
+          <span class="feat-tag">Device Alerts</span>
+          <span class="feat-tag">Customer Setup</span>
+        </div>
+      </div>
+
+      <div class="role-card" onclick="selectRole('csps')">
+        <div class="role-card-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div>
+        <div class="role-card-badge badge-standard">CSP Admin · Standard</div>
+        <div class="role-card-role">CSP Admin</div>
+        <div class="role-card-desc">Administrative access — manage portal users, expanded analytics including Activity, and device job monitoring.</div>
+        <div class="role-card-features">
+          <span class="feat-tag">User Management</span>
+          <span class="feat-tag">Activity Analytics</span>
+          <span class="feat-tag">Action Status</span>
+          <span class="feat-tag">Ad-Hoc Reports</span>
+        </div>
+      </div>
+
+      <div class="role-card" onclick="selectRole('cspe')">
+        <div class="role-card-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div>
+        <div class="role-card-badge badge-enterprise">CSP Admin · Enterprise CMP</div>
+        <div class="role-card-role">CSP Admin <span style="opacity:.6;font-weight:400">+</span> Enterprise</div>
+        <div class="role-card-desc">The broadest access in the portal — 15 features including Customer Setup, Watch Lists, Job Console, Offline Reports, and more.</div>
+        <div class="role-card-features">
+          <span class="feat-tag">All CSP Features</span>
+          <span class="feat-tag">Watch Lists</span>
+          <span class="feat-tag">Job Console</span>
+          <span class="feat-tag">Offline Reports</span>
+          <span class="feat-tag">+6 more</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     APP — MAIN HELP CONTENT
+════════════════════════════════════════════ -->
+<div id="app">
+<div class="app-layout">
 
   <!-- SIDEBAR -->
-  <nav class="sidebar">
-    <div class="sidebar-section-label">Getting Started</div>
-    <a href="#quick-start" class="sidebar-item active" onclick="smoothScroll(event,'quick-start')">
-      <svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-      Quick Start Guide
-    </a>
-
-    <div class="sidebar-section-label">Analytics</div>
-    <a href="#analytics" class="sidebar-item" onclick="smoothScroll(event,'analytics')">
-      <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
-      Dashboard
-    </a>
-    <a href="#usage" class="sidebar-item" onclick="smoothScroll(event,'usage')">
-      <svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
-      Usage Analytics
-    </a>
-
-    <div class="sidebar-section-label">Device Management</div>
-    <a href="#devices" class="sidebar-item" onclick="smoothScroll(event,'devices')">
-      <svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
-      Device Details & Actions
-    </a>
-
-    <div class="sidebar-section-label">Reports</div>
-    <a href="#reports" class="sidebar-item" onclick="smoothScroll(event,'reports')">
-      <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
-      Ad-Hoc Report Builder
-      <span class="item-count">5</span>
-    </a>
-
-    <div class="sidebar-section-label">Support</div>
-    <a href="mailto:support@dataactivationcenter.com" class="sidebar-item">
-      <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
-      Contact Support
-    </a>
-  </nav>
+  <nav class="sidebar" id="sidebar"></nav>
 
   <!-- MAIN -->
-  <main class="main">
+  <main class="main-content" id="main-content"></main>
 
-    <!-- WELCOME -->
-    <div class="welcome-card" id="quick-start">
-      <div class="welcome-eyebrow">Basic Access · Standard Plan</div>
-      <div class="welcome-title">Welcome to the DAC IQ Portal</div>
-      <div class="welcome-desc">You have access to four core features — everything you need to monitor your devices, track usage, and build custom reports. This guide covers each one clearly, step by step.</div>
-      <div class="welcome-features">
-        <div class="feature-chip"><div class="feature-chip-dot"></div>Analytics Dashboard</div>
-        <div class="feature-chip"><div class="feature-chip-dot"></div>Usage Monitoring</div>
-        <div class="feature-chip"><div class="feature-chip-dot"></div>Device Details &amp; Actions</div>
-        <div class="feature-chip"><div class="feature-chip-dot"></div>Ad-Hoc Reports</div>
-      </div>
-    </div>
-
-    <!-- QUICK START -->
-    <div class="quick-start">
-      <div class="section-header">
-        <div>
-          <div class="section-title">What do you want to do?</div>
-          <div class="section-sub">Jump directly to what you need</div>
-        </div>
-      </div>
-      <div class="quick-grid">
-        <a href="#analytics" class="quick-card" onclick="openSection(event,'analytics')">
-          <div class="quick-card-icon icon-teal">
-            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
-          </div>
-          <div class="quick-card-title">View my dashboard</div>
-          <div class="quick-card-desc">See cost, activity, and usage at a glance</div>
-        </a>
-        <a href="#usage" class="quick-card" onclick="openSection(event,'usage')">
-          <div class="quick-card-icon icon-teal">
-            <svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
-          </div>
-          <div class="quick-card-title">Check data usage</div>
-          <div class="quick-card-desc">Monitor SIM utilization and usage trends</div>
-        </a>
-        <a href="#devices" class="quick-card" onclick="openSection(event,'devices')">
-          <div class="quick-card-icon icon-navy">
-            <svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
-          </div>
-          <div class="quick-card-title">Find a device</div>
-          <div class="quick-card-desc">Search by ICCID, IMEI, MSISDN, and more</div>
-        </a>
-        <a href="#devices" class="quick-card" onclick="openSection(event,'devices')">
-          <div class="quick-card-icon icon-navy">
-            <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
-          </div>
-          <div class="quick-card-title">Activate or suspend a SIM</div>
-          <div class="quick-card-desc">Perform single or bulk device actions</div>
-        </a>
-        <a href="#reports" class="quick-card" onclick="openSection(event,'reports')">
-          <div class="quick-card-icon icon-green">
-            <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-          </div>
-          <div class="quick-card-title">Build a custom report</div>
-          <div class="quick-card-desc">Filter, analyze, and export device data</div>
-        </a>
-        <a href="#reports" class="quick-card" onclick="openSection(event,'reports')">
-          <div class="quick-card-icon icon-green">
-            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          </div>
-          <div class="quick-card-title">Schedule a report</div>
-          <div class="quick-card-desc">Set up daily, weekly, or monthly delivery</div>
-        </a>
-      </div>
-    </div>
-
-    <div class="section-divider"></div>
-
-    <!-- SECTION 1: ANALYTICS DASHBOARD -->
-    <div class="content-section open" id="analytics">
-      <div class="content-section-header" onclick="toggleSection('analytics')">
-        <div class="section-icon icon-teal">
-          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
-        </div>
-        <div class="section-header-text">
-          <div class="section-header-title">Analytics Dashboard</div>
-          <div class="section-header-sub">Your central view for cost, activity, and usage data</div>
-        </div>
-        <div class="section-toggle">
-          <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-        </div>
-      </div>
-      <div class="section-body">
-        <p class="article-intro">The Dashboard is your analytics home base. It shows you high-level cost and activity data across your entire deployment, with charts you can filter and drill into. Everything updates based on the billing cycle and filters you select.</p>
-
-        <div class="tabs-row">
-          <button class="tab-btn active" onclick="switchTab(event,'dash','overview')">Overview</button>
-          <button class="tab-btn" onclick="switchTab(event,'dash','filters')">Using Filters</button>
-          <button class="tab-btn" onclick="switchTab(event,'dash','export')">Export to PDF</button>
-        </div>
-
-        <div id="dash-overview" class="tab-panel active">
-          <div class="article-block">
-            <div class="article-h3">What you'll see on the Dashboard</div>
-            <p class="article-p">Your Dashboard default view includes two pages you can switch between:</p>
-            <div class="term-list">
-              <div class="term-item">
-                <div class="term-label">Dashboard</div>
-                <div class="term-desc">Top-level widgets showing cost and activity data cross-referenced across your deployment. A good daily check-in view.</div>
-              </div>
-              <div class="term-item">
-                <div class="term-label">Usage</div>
-                <div class="term-desc">An all-in-one view for data, SMS, and voice usage plus SIM utilization — current billing cycle and historical trends.</div>
-              </div>
-            </div>
-          </div>
-          <div class="article-block">
-            <div class="article-h3">Navigating between pages</div>
-            <ol class="steps">
-              <li>Go to the <strong>Analytics</strong> section in the portal's main navigation.</li>
-              <li>Select the page tab you want — <strong>Dashboard</strong> or <strong>Usage</strong> — at the top of the screen.</li>
-              <li>Charts load automatically based on your current filter settings.</li>
-            </ol>
-          </div>
-          <div class="callout tip">
-            <div class="callout-icon">💡</div>
-            <div class="callout-body"><strong>Good to know</strong>Most charts are interactive — click on a legend item to show or hide that metric. This lets you zero in on specific carriers, customers, or technologies without leaving the page.</div>
-          </div>
-        </div>
-
-        <div id="dash-filters" class="tab-panel">
-          <div class="article-block">
-            <div class="article-h3">Adjusting what data you see</div>
-            <p class="article-p">Session Filters let you narrow the dashboard to exactly the data you need. Changes apply across all widgets on the current page until you reset them.</p>
-            <ol class="steps">
-              <li>Look for the <strong>Session Filters</strong> area at the top of any analytics page.</li>
-              <li>Choose your <strong>Carrier Account</strong>, <strong>Customer</strong>, or <strong>Technology</strong> to narrow the scope.</li>
-              <li>Select your preferred data unit: <strong>GB</strong>, <strong>MB</strong>, or <strong>KB</strong>.</li>
-              <li>Use the <strong>sliding bar</strong> to select the billing cycle time frame (up to 12 months back).</li>
-              <li>Select <strong>Apply</strong> to update all charts with your selections.</li>
-            </ol>
-          </div>
-          <div class="callout note">
-            <div class="callout-icon">ℹ️</div>
-            <div class="callout-body"><strong>Currency filters</strong>If your deployment spans multiple currencies, a currency filter will appear automatically in the Session Filters panel.</div>
-          </div>
-        </div>
-
-        <div id="dash-export" class="tab-panel">
-          <div class="article-block">
-            <div class="article-h3">Printing or saving a dashboard view</div>
-            <ol class="steps">
-              <li>Set up your dashboard filters and page view exactly as you want them to appear.</li>
-              <li>Select the <strong>···</strong> (more options) button next to any report tab.</li>
-              <li>Choose <strong>Print PDF</strong> from the menu.</li>
-              <li>Confirm the download in the pop-up dialog — your PDF will save to your computer.</li>
-            </ol>
-          </div>
-          <div class="callout tip">
-            <div class="callout-icon">💡</div>
-            <div class="callout-body"><strong>Tip</strong>Apply your session filters before printing to capture only the data range and carrier/customer view you want in the PDF.</div>
-          </div>
-        </div>
-
-        <a href="#quick-start" class="back-top" onclick="smoothScroll(event,'quick-start')">
-          <svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"/></svg>
-          Back to top
-        </a>
-      </div>
-    </div>
-
-    <!-- SECTION 2: USAGE -->
-    <div class="content-section" id="usage">
-      <div class="content-section-header" onclick="toggleSection('usage')">
-        <div class="section-icon icon-teal">
-          <svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
-        </div>
-        <div class="section-header-text">
-          <div class="section-header-title">Usage Analytics</div>
-          <div class="section-header-sub">Data, SMS, voice usage and SIM utilization at a glance</div>
-        </div>
-        <div class="section-toggle">
-          <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-        </div>
-      </div>
-      <div class="section-body">
-        <p class="article-intro">The Usage page is your all-in-one hub for understanding how your devices are consuming data, SMS, and voice. You can see both the current billing cycle and the full history of your deployment side by side.</p>
-
-        <div class="article-block">
-          <div class="article-h3">What's shown on this page</div>
-          <ul class="bullet-list">
-            <li>Current cycle-to-date usage for data, SMS, and voice</li>
-            <li>SIM utilization percentages — how much of your pool is actively being used</li>
-            <li>Historical usage trends across past billing cycles</li>
-            <li>Inactivity monitoring — SIMs that haven't connected recently</li>
-          </ul>
-        </div>
-
-        <div class="article-block">
-          <div class="article-h3">Reading the charts</div>
-          <p class="article-p">Each widget on the Usage page can be filtered independently using the chart's built-in metric toggles. Click any legend item to show or hide it. This is especially useful for comparing specific carriers or customer segments without changing your session filters.</p>
-        </div>
-
-        <div class="callout note">
-          <div class="callout-icon">ℹ️</div>
-          <div class="callout-body"><strong>Usage vs. Dashboard</strong>The Dashboard page gives you a cost-and-activity summary. The Usage page focuses specifically on consumption metrics. Use both together for the full picture.</div>
-        </div>
-
-        <a href="#quick-start" class="back-top" onclick="smoothScroll(event,'quick-start')">
-          <svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"/></svg>
-          Back to top
-        </a>
-      </div>
-    </div>
-
-    <!-- SECTION 3: DEVICE MANAGEMENT -->
-    <div class="content-section" id="devices">
-      <div class="content-section-header" onclick="toggleSection('devices')">
-        <div class="section-icon icon-navy">
-          <svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
-        </div>
-        <div class="section-header-text">
-          <div class="section-header-title">Device Details &amp; Actions</div>
-          <div class="section-header-sub">Find devices, view their profiles, and take action</div>
-        </div>
-        <div class="section-toggle">
-          <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-        </div>
-      </div>
-      <div class="section-body">
-        <p class="article-intro">Device Management is where you search for individual SIMs, review their full profile, and perform carrier actions like activating, deactivating, or changing rate plans — for one device or many at once.</p>
-
-        <div class="tabs-row">
-          <button class="tab-btn active" onclick="switchTab(event,'dev','search')">Searching for Devices</button>
-          <button class="tab-btn" onclick="switchTab(event,'dev','columns')">Columns &amp; Details</button>
-          <button class="tab-btn" onclick="switchTab(event,'dev','actions')">Taking Action</button>
-        </div>
-
-        <div id="dev-search" class="tab-panel active">
-          <div class="article-block">
-            <div class="article-h3">Three ways to search</div>
-            <div class="term-list">
-              <div class="term-item">
-                <div class="term-label">Quick Search</div>
-                <div class="term-desc">Use the funnel icon to open Quick Search. Search by any device ID type (ICCID, MSISDN, IMEI, IMSI, EID, or Custom Columns) and filter by Customer, Status, or Rate Plan.</div>
-              </div>
-              <div class="term-item">
-                <div class="term-label">List Search</div>
-                <div class="term-desc">Search for up to 2,000 devices at once by entering comma-separated device IDs. Ideal for bulk lookups or comparisons.</div>
-              </div>
-              <div class="term-item">
-                <div class="term-label">Column Filters</div>
-                <div class="term-desc">Click the <strong>Columns</strong> button in the results table to toggle which fields are displayed. Save your column preference for future sessions.</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div id="dev-columns" class="tab-panel">
-          <div class="article-block">
-            <div class="article-h3">Default columns in your device list</div>
-            <p class="article-p">These columns appear by default when viewing search results. You can add, remove, or reorder them using the <strong>Columns</strong> button.</p>
-            <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:8px;">
-              <span class="col-tag">Internal Device ID</span>
-              <span class="col-tag">External Device ID</span>
-              <span class="col-tag">ICCID</span>
-              <span class="col-tag">MSISDN/MDN</span>
-              <span class="col-tag">IMEI</span>
-              <span class="col-tag">IMSI</span>
-              <span class="col-tag">Status</span>
-              <span class="col-tag">CTD Usage (MB)</span>
-              <span class="col-tag">Customer Name</span>
-              <span class="col-tag">Activation Date</span>
-              <span class="col-tag">InSession Indicator</span>
-            </div>
-          </div>
-          <div class="article-block">
-            <div class="article-h3">Viewing a full device profile</div>
-            <p class="article-p">Click on any device's <strong>IMEI</strong> in the results table to open its full profile. The profile includes:</p>
-            <ul class="bullet-list">
-              <li>Profile summary and capability overview</li>
-              <li>Connectivity and network information</li>
-              <li>Hardware details and specifications</li>
-              <li>Programming and router details</li>
-              <li>Audio and voice-over details</li>
-            </ul>
-          </div>
-        </div>
-
-        <div id="dev-actions" class="tab-panel">
-          <div class="article-block">
-            <div class="article-h3">Acting on one or a few devices</div>
-            <ol class="steps">
-              <li>Search for and locate your device(s) in the results table.</li>
-              <li>Check the box next to each device you want to act on.</li>
-              <li>Select the action you want from the <strong>Actions</strong> drop-down menu.</li>
-              <li>Fill in any required information (e.g., a new rate plan name).</li>
-              <li>Confirm to process the action.</li>
-            </ol>
-          </div>
-          <div class="article-block">
-            <div class="article-h3">Acting on many devices at once (Bulk)</div>
-            <ol class="steps">
-              <li>Select the action you want from the <strong>Actions</strong> drop-down.</li>
-              <li>Download the template spreadsheet that appears.</li>
-              <li>Fill in your SIM/device data in the template.</li>
-              <li>Import and upload the completed template back into the portal.</li>
-              <li>Verify the job status on the <strong>Action Status</strong> page (if available in your plan).</li>
-            </ol>
-          </div>
-          <div class="article-block">
-            <div class="article-h3">Available actions</div>
-            <p class="article-p">Available actions depend on your carrier connection. Common actions include:</p>
-            <ul class="bullet-list">
-              <li>Activate SIM</li>
-              <li>Deactivate SIM</li>
-              <li>Suspend SIM</li>
-              <li>Restore SIM</li>
-              <li>Change Rate Plan</li>
-              <li>Terminate / Kill SIM</li>
-              <li>Send SMS</li>
-            </ul>
-          </div>
-          <div class="callout warning">
-            <div class="callout-icon">⚠️</div>
-            <div class="callout-body"><strong>Heads up on Terminate / Kill SIM</strong>This action is permanent and cannot be undone. Double-check your selection before confirming.</div>
-          </div>
-        </div>
-
-        <a href="#quick-start" class="back-top" onclick="smoothScroll(event,'quick-start')">
-          <svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"/></svg>
-          Back to top
-        </a>
-      </div>
-    </div>
-
-    <!-- SECTION 4: REPORTS -->
-    <div class="content-section" id="reports">
-      <div class="content-section-header" onclick="toggleSection('reports')">
-        <div class="section-icon icon-green">
-          <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-        </div>
-        <div class="section-header-text">
-          <div class="section-header-title">Ad-Hoc Report Builder</div>
-          <div class="section-header-sub">Build, analyze, and schedule custom reports on your data</div>
-        </div>
-        <div class="section-toggle">
-          <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-        </div>
-      </div>
-      <div class="section-body">
-        <p class="article-intro">The Ad-Hoc Report Builder lets you construct custom reports using filters you define. Build them once and re-run them anytime, export to Excel or CSV, and even schedule automatic delivery. No coding required.</p>
-
-        <div class="tabs-row">
-          <button class="tab-btn active" onclick="switchTab(event,'rep','categories')">Report Categories</button>
-          <button class="tab-btn" onclick="switchTab(event,'rep','build')">Building a Report</button>
-          <button class="tab-btn" onclick="switchTab(event,'rep','views')">Preview &amp; Analyze</button>
-          <button class="tab-btn" onclick="switchTab(event,'rep','schedule')">Scheduling</button>
-        </div>
-
-        <div id="rep-categories" class="tab-panel active">
-          <div class="article-block">
-            <div class="article-h3">Five report categories to choose from</div>
-            <table class="data-table">
-              <thead>
-                <tr>
-                  <th>Category</th>
-                  <th>What it contains</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><strong>Usage by Device</strong></td>
-                  <td>All device-level usage data for a specific connection, including usage statistics per SIM.</td>
-                </tr>
-                <tr>
-                  <td><strong>Cost Allocation</strong></td>
-                  <td>Usage and cost data for devices, organized per billing cycle.</td>
-                </tr>
-                <tr>
-                  <td><strong>Monthly Usage History</strong></td>
-                  <td>Usage data on devices per billing cycle — the go-to for optimization analysis.</td>
-                </tr>
-                <tr>
-                  <td><strong>Usage by Zone Tracking</strong></td>
-                  <td>Usage combined with zone data per billing cycle. Note: devices active in multiple zones may appear on multiple lines. Not available on all connections.</td>
-                </tr>
-                <tr>
-                  <td><strong>Change Tracking by Device</strong></td>
-                  <td>Records of changes made to devices (e.g., rate plan changes, status changes). Availability depends on carrier data.</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-
-        <div id="rep-build" class="tab-panel">
-          <div class="article-block">
-            <div class="article-h3">Building your first report</div>
-            <ol class="steps">
-              <li>Go to <strong>Reports &amp; Notifications</strong> in the portal navigation, then select <strong>Ad-Hoc Reports</strong>.</li>
-              <li>Click <strong>Add New Report</strong> from the left-side menu.</li>
-              <li>Give your report a name and optional description.</li>
-              <li>Click <strong>+ Add Filter</strong> to set your query parameters — choose a column, set the operator (greater than, includes, equals, etc.), and enter a value.</li>
-              <li>Add as many filters as you need, then click <strong>Save</strong>.</li>
-            </ol>
-          </div>
-          <div class="callout tip">
-            <div class="callout-icon">💡</div>
-            <div class="callout-body"><strong>Start simple</strong>Build your first report with just one or two filters. Once you see results you can refine further. Saved reports can always be edited.</div>
-          </div>
-        </div>
-
-        <div id="rep-views" class="tab-panel">
-          <div class="article-block">
-            <div class="article-h3">Three ways to look at your results</div>
-            <div class="term-list">
-              <div class="term-item">
-                <div class="term-label">Preview</div>
-                <div class="term-desc">Shows the first 5 rows of your report results — a quick sanity check before exporting. Click the Excel icon to export the full report to a spreadsheet.</div>
-              </div>
-              <div class="term-item">
-                <div class="term-label">Analyze</div>
-                <div class="term-desc">A customizable pivot table view with multiple chart types. Mix dimensions and measures to slice your data any way you need. Changes update in real time as you configure.</div>
-              </div>
-              <div class="term-item">
-                <div class="term-label">History</div>
-                <div class="term-desc">Shows a log of every time this report has been run — including who received it, when, and whether it succeeded. Useful for confirming scheduled reports are running.</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div id="rep-schedule" class="tab-panel">
-          <div class="article-block">
-            <div class="article-h3">Setting up automatic delivery</div>
-            <p class="article-p">Once a report is saved, you can schedule it to run and deliver automatically on a recurring basis.</p>
-            <ol class="steps">
-              <li>Open the report and go to its <strong>Settings</strong>.</li>
-              <li>Select the <strong>Schedule</strong> tab.</li>
-              <li>Choose your frequency: <strong>Daily</strong>, <strong>Weekly</strong>, or <strong>Monthly</strong>.</li>
-              <li>Set the time you want the report to run.</li>
-              <li>Choose the export format: <strong>Excel</strong> or <strong>CSV</strong>.</li>
-              <li>Save your schedule settings.</li>
-            </ol>
-          </div>
-          <div class="article-block">
-            <div class="article-h3">Other report settings</div>
-            <div class="term-list">
-              <div class="term-item">
-                <div class="term-label">General</div>
-                <div class="term-desc">Update the report description, toggle it active or inactive, set an expiration date, or adjust priority.</div>
-              </div>
-              <div class="term-item">
-                <div class="term-label">Permissions</div>
-                <div class="term-desc">Control which other portal users can view or edit this report.</div>
-              </div>
-              <div class="term-item">
-                <div class="term-label">Actions</div>
-                <div class="term-desc">Configure automatic device actions to fire when devices match your report's criteria — for example, automatically change rate plans for devices exceeding a usage threshold.</div>
-              </div>
-            </div>
-          </div>
-          <div class="callout note">
-            <div class="callout-icon">ℹ️</div>
-            <div class="callout-body"><strong>Report Actions</strong>The Actions tab lets you automate device changes based on report results. This is a powerful feature — if you're unsure, contact DAC support before setting up automated actions.</div>
-          </div>
-        </div>
-
-        <a href="#quick-start" class="back-top" onclick="smoothScroll(event,'quick-start')">
-          <svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"/></svg>
-          Back to top
-        </a>
-      </div>
-    </div>
-
-    <!-- NEED HELP CARD -->
-    <div style="background:white;border:1px solid var(--light-gray);border-radius:var(--radius);padding:28px 32px;display:flex;align-items:center;gap:24px;margin-top:8px;">
-      <div style="width:48px;height:48px;background:linear-gradient(135deg,var(--cyan),var(--lake));border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-        <svg width="22" height="22" viewBox="0 0 24 24" stroke="white" fill="none" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
-      </div>
-      <div style="flex:1;">
-        <div style="font-size:15px;font-weight:600;color:var(--midnight);margin-bottom:4px;">Still need help?</div>
-        <div style="font-size:13px;color:var(--text-muted);line-height:1.6;">Your DAC support team is here. Reach out and we'll walk you through anything in this guide.</div>
-      </div>
-      <a href="mailto:support@dataactivationcenter.com" style="background:var(--midnight);color:white;padding:10px 20px;border-radius:var(--radius-sm);font-size:13px;font-weight:500;text-decoration:none;white-space:nowrap;transition:background 0.15s;" onmouseover="this.style.background='var(--navy)'" onmouseout="this.style.background='var(--midnight)'">Contact Support</a>
-    </div>
-
-  </main>
 </div>
-
-<!-- FOOTER -->
-<div class="help-footer">
-  DAC IQ Portal Help Center &nbsp;·&nbsp; Basic Access · Standard &nbsp;·&nbsp; 
-  <a href="https://www.dataactivationcenter.com">dataactivationcenter.com</a> &nbsp;·&nbsp; 
-  Need a different role? <a href="#">Switch guide</a>
+<div class="page-footer">
+  DAC IQ Portal Help Center &nbsp;·&nbsp; <span id="footer-role"></span> &nbsp;·&nbsp;
+  <a href="https://www.dataactivationcenter.com">dataactivationcenter.com</a> &nbsp;·&nbsp;
+  <a href="mailto:support@dataactivationcenter.com">support@dataactivationcenter.com</a>
+</div>
 </div>
 
 <script>
-  function toggleSection(id) {
-    const el = document.getElementById(id);
-    el.classList.toggle('open');
-    // Update sidebar active state
-    document.querySelectorAll('.sidebar-item').forEach(i => i.classList.remove('active'));
-    const sideLink = document.querySelector(`.sidebar-item[href="#${id}"]`);
-    if (sideLink) sideLink.classList.add('active');
+// ═══════════════════════════════════════════
+// ROLE CONFIGURATION
+// ═══════════════════════════════════════════
+const ROLES = {
+  bas: {
+    label:'Basic Access · Standard',
+    short:'Basic Access — Standard',
+    dotColor:'#3AC7D6',
+    bannerGradient:'linear-gradient(135deg,#07303D 0%,#134B60 100%)',
+    bannerAccent:'#3AC7D6',
+    iconBg:'linear-gradient(135deg,#3AC7D6,#2b96af)',
+    sectionAccent:'#3AC7D6',
+    sections:['analytics','usage','devices','reports'],
+    qs:[
+      {icon:'dashboard',label:'View my dashboard',desc:'Cost, activity & usage at a glance',target:'analytics'},
+      {icon:'bar',label:'Check data usage',desc:'SIM utilization and usage trends',target:'usage'},
+      {icon:'phone',label:'Find a device',desc:'Search by ICCID, IMEI, MSISDN',target:'devices'},
+      {icon:'zap',label:'Activate or suspend a SIM',desc:'Single or bulk device actions',target:'devices'},
+      {icon:'file',label:'Build a custom report',desc:'Filter, analyze, and export data',target:'reports'},
+      {icon:'clock',label:'Schedule a report',desc:'Daily, weekly, or monthly delivery',target:'reports'},
+    ]
+  },
+  bae: {
+    label:'Basic Access · Enterprise CMP',
+    short:'Basic Access — Enterprise CMP',
+    dotColor:'#13A87D',
+    bannerGradient:'linear-gradient(135deg,#07303D 0%,#024534 100%)',
+    bannerAccent:'#13A87D',
+    iconBg:'linear-gradient(135deg,#13A87D,#024534)',
+    sectionAccent:'#13A87D',
+    sections:['analytics','usage','devices','reports','alerts','customers'],
+    qs:[
+      {icon:'dashboard',label:'View my dashboard',desc:'Cost, activity & usage at a glance',target:'analytics'},
+      {icon:'phone',label:'Find or action a device',desc:'Search, activate, change rate plans',target:'devices'},
+      {icon:'file',label:'Build a custom report',desc:'Filter, analyze, and export data',target:'reports'},
+      {icon:'bell',label:'Set up a device alert',desc:'Automate monitoring & device actions',target:'alerts'},
+      {icon:'schedule',label:'Schedule an alert',desc:'Daily, weekly, or monthly delivery',target:'alerts'},
+      {icon:'users',label:'Add or manage a customer',desc:'Build downstream customer hierarchy',target:'customers'},
+    ]
+  },
+  csps: {
+    label:'CSP Admin · Standard',
+    short:'CSP Admin — Standard',
+    dotColor:'#2b96af',
+    bannerGradient:'linear-gradient(135deg,#134B60 0%,#07303D 100%)',
+    bannerAccent:'#2b96af',
+    iconBg:'linear-gradient(135deg,#2b96af,#134B60)',
+    sectionAccent:'#2b96af',
+    sections:['users','analytics','devices','actionstatus','reports'],
+    qs:[
+      {icon:'users',label:'Add or manage a user',desc:'Create accounts, assign roles, set SSO',target:'users'},
+      {icon:'dashboard',label:'View analytics',desc:'Dashboard, Usage & Activity pages',target:'analytics'},
+      {icon:'phone',label:'Find or action a device',desc:'Search, activate, suspend, change plans',target:'devices'},
+      {icon:'clock',label:'Monitor job status',desc:'Approve & track device action jobs',target:'actionstatus'},
+      {icon:'file',label:'Build a custom report',desc:'Filter, analyze, and schedule',target:'reports'},
+    ]
+  },
+  cspe: {
+    label:'CSP Admin · Enterprise CMP',
+    short:'CSP Admin — Enterprise CMP',
+    dotColor:'#13A87D',
+    bannerGradient:'linear-gradient(135deg,#07303D 0%,#134B60 50%,#024534 100%)',
+    bannerAccent:'#13A87D',
+    iconBg:'linear-gradient(135deg,#13A87D,#2b96af)',
+    sectionAccent:'#13A87D',
+    sections:['users','customers','analytics','devices','watchlists','reports','alerts','notifications','offline','processes'],
+    qs:[
+      {icon:'users',label:'Manage portal users',desc:'Add users, assign roles, configure SSO',target:'users'},
+      {icon:'userplus',label:'Manage customers',desc:'Build downstream hierarchy',target:'customers'},
+      {icon:'dashboard',label:'View full analytics',desc:'All 5 pages including Customer & Multi-Carrier',target:'analytics'},
+      {icon:'phone',label:'Find or action a device',desc:'Search, activate, suspend, change plans',target:'devices'},
+      {icon:'eye',label:'Create a watch list',desc:'Track groups of devices for monitoring',target:'watchlists'},
+      {icon:'bell',label:'Set up device alerts',desc:'Automate monitoring and device actions',target:'alerts'},
+      {icon:'notif',label:'Configure notifications',desc:'Email and SMS alert preferences',target:'notifications'},
+      {icon:'download',label:'Download offline reports',desc:'Access large exported spreadsheets',target:'offline'},
+      {icon:'clock',label:'Monitor data pipes & jobs',desc:'Rerun failed jobs, approve actions',target:'processes'},
+    ]
   }
+};
 
-  function openSection(e, id) {
-    e.preventDefault();
-    const el = document.getElementById(id);
-    if (!el.classList.contains('open')) el.classList.add('open');
-    setTimeout(() => el.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50);
-  }
+// ═══════════════════════════════════════════
+// SECTION DEFINITIONS
+// ═══════════════════════════════════════════
+const SECTIONS = {
 
-  function switchTab(e, group, panel) {
-    // Deactivate all buttons and panels in this group
-    const header = e.target.closest('.tabs-row');
-    if (!header) return;
-    header.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-    e.target.classList.add('active');
-    // Find all panels with this group prefix
-    document.querySelectorAll(`[id^="${group}-"]`).forEach(p => p.classList.remove('active'));
-    const target = document.getElementById(`${group}-${panel}`);
-    if (target) target.classList.add('active');
-  }
+analytics: {
+  id:'analytics',
+  label:'Analytics Dashboard',
+  sublabel:'Cost, activity, and usage data',
+  icon:'dashboard',
+  iconBg:'linear-gradient(135deg,#3AC7D6,#2b96af)',
+  roles:['bas','bae','csps','cspe'],
+  build:(role)=> `
+    <p class="article-intro">The Dashboard is your analytics home base. It shows high-level cost and activity data across your entire deployment with interactive charts you can filter by billing cycle, carrier, customer, and technology.</p>
+    ${imgPlaceholder('Full-screen Analytics Dashboard showing default Dashboard page with cost and activity widgets','analytics-dashboard-overview.png')}
+    <div class="article-block">
+      <div class="ah3">Default pages available to you</div>
+      <div class="term-item"><div class="term-label">Dashboard</div><div class="term-desc">Top-level cost and activity overview. A good daily check-in view — widgets here are cross-referenced across your other analytics pages.</div></div>
+      <div class="term-item"><div class="term-label">Usage</div><div class="term-desc">All-in-one hub for data, SMS, and voice usage plus SIM utilization — both current billing cycle and full deployment history.</div></div>
+      ${role==='csps'||role==='cspe' ? `<div class="term-item"><div class="term-label">Activity</div><div class="term-desc">SIM activity trends across your entire deployment by technology, carrier, and connection type. Available to CSP Admin only.</div></div>` : ''}
+      ${role==='cspe' ? `<div class="term-item"><div class="term-label">Customer Analytics</div><div class="term-desc">Segmented usage, cost, and activity views per downstream customer. Enterprise CMP only.</div></div><div class="term-item"><div class="term-label">Multi-Carrier Analytics</div><div class="term-desc">Aggregated and comparative views across all carrier connections. Enterprise CMP only.</div></div>` : ''}
+    </div>
+    <div class="article-block">
+      <div class="ah3">Navigating between pages</div>
+      <ol class="steps">
+        <li>Go to the <strong>Analytics</strong> section in the portal's main navigation.</li>
+        <li>Select the page tab you want at the top of the screen.</li>
+        <li>Charts load automatically based on your current filter settings.</li>
+      </ol>
+      ${imgPlaceholder('Close-up of the Analytics tab bar showing Dashboard, Usage, and Activity tabs','analytics-tab-navigation.png')}
+    </div>
+    <div class="tabs-row">
+      <button class="tab-btn active" onclick="switchTab(event,'adash','filters')">Using Filters</button>
+      <button class="tab-btn" onclick="switchTab(event,'adash','export')">Export to PDF</button>
+      ${role==='csps'||role==='cspe' ? `<button class="tab-btn" onclick="switchTab(event,'adash','manage')">Managing Reports</button>` : ''}
+    </div>
+    <div id="adash-filters" class="tab-panel active">
+      <div class="article-block">
+        <div class="ah3">Adjusting what data you see</div>
+        <p class="article-p">Session Filters narrow every widget on the page at once. Changes stay in effect until you reset them or navigate away.</p>
+        <ol class="steps">
+          <li>Locate the <strong>Session Filters</strong> panel at the top of any analytics page.</li>
+          <li>Choose your <strong>Carrier Account</strong>, <strong>Customer</strong>, or <strong>Technology</strong>.</li>
+          <li>Set your data unit: <strong>GB</strong>, <strong>MB</strong>, or <strong>KB</strong>.</li>
+          <li>Use the <strong>sliding bar</strong> to select the billing cycle time frame (up to 12 months).</li>
+          <li>Click <strong>Apply</strong> — all widgets update instantly.</li>
+        </ol>
+        ${imgPlaceholder('Session Filters panel expanded with Carrier Account dropdown open and Apply button visible','analytics-session-filters.png')}
+        <div class="callout note"><div class="callout-icon">ℹ️</div><div class="callout-body"><strong>Currency filters</strong>If your deployment spans multiple currencies, a currency filter appears automatically in the Session Filters panel.</div></div>
+      </div>
+    </div>
+    <div id="adash-export" class="tab-panel">
+      <div class="article-block">
+        <div class="ah3">Printing or saving a dashboard view</div>
+        <ol class="steps">
+          <li>Set your filters and page view exactly as you want them to appear in the PDF.</li>
+          <li>Click the <strong>···</strong> (more options) button next to any report tab.</li>
+          <li>Choose <strong>Print PDF</strong> from the drop-down menu.</li>
+          <li>Confirm the download in the pop-up dialog.</li>
+        </ol>
+        ${imgPlaceholder('The ··· menu open on a report tab showing the Print PDF option highlighted','analytics-print-pdf.png')}
+        <div class="callout tip"><div class="callout-icon">💡</div><div class="callout-body"><strong>Tip</strong>Apply your session filters before printing to capture only the data range and view you want in the PDF.</div></div>
+      </div>
+    </div>
+    ${role==='csps'||role==='cspe' ? `
+    <div id="adash-manage" class="tab-panel">
+      <div class="article-block">
+        <div class="ah3">Managing your analytics reports</div>
+        <p class="article-p">As a CSP Admin you can create, rename, and manage report views within Analytics.</p>
+        <ul class="bullet-list">
+          <li>Create new reports from templates or by adding widgets individually</li>
+          <li>Rename, clear, or delete reports via the <strong>···</strong> menu</li>
+          <li>Manage role-based and downstream customer access per report</li>
+        </ul>
+        ${imgPlaceholder('Report management menu open showing Create, Rename, Delete, and Access options','analytics-report-management.png')}
+      </div>
+    </div>` : ''}
+    <div class="callout tip"><div class="callout-icon">💡</div><div class="callout-body"><strong>Interactive charts</strong>Click any legend item on a chart to show or hide that metric — useful for isolating specific carriers or customers without changing your filters.</div></div>
+    ${backToTop()}
+  `
+},
 
-  function smoothScroll(e, id) {
-    e.preventDefault();
-    const el = document.getElementById(id);
-    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    // Update sidebar
-    document.querySelectorAll('.sidebar-item').forEach(i => i.classList.remove('active'));
-    const sideLink = document.querySelector(`.sidebar-item[href="#${id}"]`);
-    if (sideLink) sideLink.classList.add('active');
-  }
+usage: {
+  id:'usage',
+  label:'Usage Analytics',
+  sublabel:'Data, SMS, voice usage and SIM utilization',
+  icon:'bar',
+  iconBg:'linear-gradient(135deg,#3AC7D6,#2b96af)',
+  roles:['bas','bae'],
+  build:(role)=>`
+    <p class="article-intro">The Usage page is your all-in-one hub for understanding how your devices are consuming data, SMS, and voice. See both the current billing cycle and full deployment history side by side.</p>
+    ${imgPlaceholder('Full Usage analytics page showing data, SMS, and voice usage widgets with SIM utilization','usage-analytics-overview.png')}
+    <div class="article-block">
+      <div class="ah3">What's shown on this page</div>
+      <ul class="bullet-list">
+        <li>Current cycle-to-date usage for data, SMS, and voice</li>
+        <li>SIM utilization percentages — how much of your pool is actively used</li>
+        <li>Historical usage trends across past billing cycles</li>
+        <li>Inactivity monitoring — SIMs that haven't connected recently</li>
+      </ul>
+    </div>
+    <div class="article-block">
+      <div class="ah3">Reading the charts</div>
+      <p class="article-p">Each widget on the Usage page has built-in metric toggles in its legend. Click any legend item to show or hide it — useful for comparing specific carriers or customer segments without changing your session filters.</p>
+      ${imgPlaceholder('Usage chart with a legend item being toggled showing the chart updating in real time','usage-chart-toggle.png')}
+    </div>
+    <div class="callout note"><div class="callout-icon">ℹ️</div><div class="callout-body"><strong>Dashboard vs. Usage</strong>The Dashboard page gives you a cost-and-activity summary. The Usage page focuses on consumption metrics. Use both together for the full picture.</div></div>
+    ${backToTop()}
+  `
+},
 
-  // Intersection observer for sidebar highlighting
-  const sections = ['quick-start','analytics','usage','devices','reports'];
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        document.querySelectorAll('.sidebar-item').forEach(i => i.classList.remove('active'));
-        const sideLink = document.querySelector(`.sidebar-item[href="#${entry.target.id}"]`);
-        if (sideLink) sideLink.classList.add('active');
-      }
+devices: {
+  id:'devices',
+  label:'Device Details & Actions',
+  sublabel:'Find devices, view profiles, and take action',
+  icon:'phone',
+  iconBg:'linear-gradient(135deg,#2b96af,#134B60)',
+  roles:['bas','bae','csps','cspe'],
+  build:(role)=>`
+    <p class="article-intro">Device Management is where you find individual SIMs, review their full profile, and perform carrier actions like activating, deactivating, or changing rate plans — for one device or thousands at once.</p>
+    ${imgPlaceholder('Device Management main screen showing the search interface and device results table','device-management-overview.png')}
+    <div class="tabs-row">
+      <button class="tab-btn active" onclick="switchTab(event,'dev','search')">Searching for Devices</button>
+      <button class="tab-btn" onclick="switchTab(event,'dev','columns')">Columns & Profiles</button>
+      <button class="tab-btn" onclick="switchTab(event,'dev','single')">Single / Multiple Actions</button>
+      <button class="tab-btn" onclick="switchTab(event,'dev','bulk')">Bulk Actions</button>
+    </div>
+    <div id="dev-search" class="tab-panel active">
+      <div class="article-block">
+        <div class="ah3">Three ways to search</div>
+        <div class="term-item"><div class="term-label">Quick Search</div><div class="term-desc">Click the funnel icon to open Quick Search. Search by any device ID type (ICCID, MSISDN, IMEI, IMSI, EID, or Custom Columns 1–5) and filter by Customer, Status, Rate Plan, or Customer Rate Plan.</div></div>
+        <div class="term-item"><div class="term-label">List Search</div><div class="term-desc">Enter up to 2,000 comma-separated device IDs to look up multiple devices at once — ideal for batch verification or comparison.</div></div>
+        <div class="term-item"><div class="term-label">Column Filters</div><div class="term-desc">Click the <strong>Columns</strong> button in the results table to toggle which fields are shown. Save your preference for future sessions.</div></div>
+        ${imgPlaceholder('Quick Search panel open showing the device ID type dropdown and filter options for Customer and Status','device-quick-search.png')}
+      </div>
+    </div>
+    <div id="dev-columns" class="tab-panel">
+      <div class="article-block">
+        <div class="ah3">Default columns in your device list</div>
+        <p class="article-p">These appear by default in search results. Add, remove, or reorder using the <strong>Columns</strong> button.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:5px;margin:10px 0;">
+          <span class="col-tag">Internal Device ID</span><span class="col-tag">External Device ID</span><span class="col-tag">ICCID</span><span class="col-tag">MSISDN/MDN</span><span class="col-tag">IMEI</span><span class="col-tag">IMSI</span><span class="col-tag">Status</span><span class="col-tag">CTD Usage (MB)</span><span class="col-tag">Customer Name</span><span class="col-tag">Activation Date</span><span class="col-tag">InSession Indicator</span>
+        </div>
+        ${imgPlaceholder('Columns picker panel open showing toggleable column options with some checked and some unchecked','device-columns-picker.png')}
+      </div>
+      <div class="article-block">
+        <div class="ah3">Viewing a full device profile</div>
+        <p class="article-p">Click any device's <strong>IMEI</strong> in the results table to open its full profile, which includes:</p>
+        <ul class="bullet-list">
+          <li>Profile summary and capability overview</li>
+          <li>Connectivity and network information</li>
+          <li>Hardware and device specifications</li>
+          <li>Programming, router, audio, and voice-over details</li>
+        </ul>
+        ${imgPlaceholder('Device profile page open showing the profile summary section with network and hardware tabs visible','device-profile-page.png')}
+      </div>
+    </div>
+    <div id="dev-single" class="tab-panel">
+      <div class="article-block">
+        <div class="ah3">Acting on one or a few devices</div>
+        <ol class="steps">
+          <li>Search for and locate your device(s) in the results table.</li>
+          <li>Check the box next to each device you want to act on.</li>
+          <li>Select your action from the <strong>Actions</strong> drop-down menu.</li>
+          <li>Fill in any required information (e.g., a new rate plan name).</li>
+          <li>Confirm to process the action immediately.</li>
+        </ol>
+        ${imgPlaceholder('Actions dropdown open on a selected device showing available options like Activate, Deactivate, Change Rate Plan','device-actions-dropdown.png')}
+      </div>
+      <div class="article-block">
+        <div class="ah3">Available actions</div>
+        <p class="article-p">Available actions depend on your carrier connection. Common options include:</p>
+        <ul class="bullet-list">
+          <li>Activate SIM / Deactivate SIM</li>
+          <li>Suspend SIM / Restore SIM</li>
+          <li>Change Rate Plan</li>
+          <li>Terminate / Kill SIM <em style="font-size:12px;color:var(--text-muted)">(permanent — cannot be undone)</em></li>
+          <li>Send SMS</li>
+        </ul>
+        <div class="callout warning"><div class="callout-icon">⚠️</div><div class="callout-body"><strong>Terminate / Kill SIM is permanent</strong>This action cannot be undone. Double-check your device selection before confirming.</div></div>
+      </div>
+    </div>
+    <div id="dev-bulk" class="tab-panel">
+      <div class="article-block">
+        <div class="ah3">Acting on many devices at once</div>
+        <ol class="steps">
+          <li>Select the action you want from the <strong>Actions</strong> drop-down.</li>
+          <li>Download the <strong>template spreadsheet</strong> that appears.</li>
+          <li>Fill in your SIM/device data in the template — one device per row.</li>
+          <li>Import and upload the completed template back into the portal.</li>
+          <li>Track the job status in <strong>Action Status / Processes</strong>.</li>
+        </ol>
+        ${imgPlaceholder('Bulk upload dialog showing the Download Template button and the file import area','device-bulk-upload.png')}
+        <div class="callout tip"><div class="callout-icon">💡</div><div class="callout-body"><strong>Template format matters</strong>Use the template downloaded from the portal for that specific action — don't reuse templates from different action types as the column format may differ.</div></div>
+      </div>
+    </div>
+    ${backToTop()}
+  `
+},
+
+reports: {
+  id:'reports',
+  label:'Ad-Hoc Report Builder',
+  sublabel:'Build, analyze, and schedule custom reports',
+  icon:'file',
+  iconBg:'linear-gradient(135deg,#13A87D,#024534)',
+  roles:['bas','bae','csps','cspe'],
+  build:(role)=>`
+    <p class="article-intro">The Ad-Hoc Report Builder lets you create custom reports using filters you define. Build them once, re-run anytime, export to Excel or CSV, and schedule automatic delivery on a recurring basis.</p>
+    ${imgPlaceholder('Ad-Hoc Reports main screen showing the left-side report list and main report builder area','reports-main-screen.png')}
+    <div class="tabs-row">
+      <button class="tab-btn active" onclick="switchTab(event,'rep','categories')">Report Categories</button>
+      <button class="tab-btn" onclick="switchTab(event,'rep','build')">Building a Report</button>
+      <button class="tab-btn" onclick="switchTab(event,'rep','views')">Preview & Analyze</button>
+      <button class="tab-btn" onclick="switchTab(event,'rep','schedule')">Scheduling & Settings</button>
+    </div>
+    <div id="rep-categories" class="tab-panel active">
+      <div class="article-block">
+        <div class="ah3">Five report categories</div>
+        <table class="data-table">
+          <thead><tr><th>Category</th><th>Best for</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Usage by Device</strong></td><td>All device-level usage data per connection, including per-SIM usage statistics.</td></tr>
+            <tr><td><strong>Cost Allocation</strong></td><td>Usage and cost data per device, organized by billing cycle.</td></tr>
+            <tr><td><strong>Monthly Usage History</strong></td><td>Usage per billing cycle across history — the go-to for optimization analysis.</td></tr>
+            <tr><td><strong>Usage by Zone Tracking</strong></td><td>Usage combined with zone data per billing cycle. Devices active in multiple zones may appear on multiple rows. Not available on all connections.</td></tr>
+            <tr><td><strong>Change Tracking by Device</strong></td><td>Records of changes made to devices (rate plan changes, status changes, etc.). Availability depends on carrier data.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div id="rep-build" class="tab-panel">
+      <div class="article-block">
+        <div class="ah3">Building your first report</div>
+        <ol class="steps">
+          <li>Go to <strong>Reports & Notifications → Ad-Hoc Reports</strong>.</li>
+          <li>Click <strong>Add New Report</strong> from the left-side menu.</li>
+          <li>Give your report a name and an optional description.</li>
+          <li>Click <strong>+ Add Filter</strong> — choose a column, set the operator (greater than, includes, equals, etc.), and enter a value.</li>
+          <li>Add as many filters as you need to narrow the data.</li>
+          <li>Click <strong>Save</strong> to enable Preview, Analyze, and History views.</li>
+        </ol>
+        ${imgPlaceholder('Report builder screen showing the Add Filter dialog with column selector, operator dropdown, and value field','reports-add-filter.png')}
+        <div class="callout tip"><div class="callout-icon">💡</div><div class="callout-body"><strong>Start simple</strong>Build your first report with just one or two filters. Once you see results, refine from there. Saved reports can always be edited.</div></div>
+      </div>
+    </div>
+    <div id="rep-views" class="tab-panel">
+      <div class="article-block">
+        <div class="ah3">Three ways to look at your results</div>
+        <div class="term-item"><div class="term-label">Preview</div><div class="term-desc">Shows the first 5 rows of results — a quick sanity check before exporting. Click the Excel icon to export the full report.</div></div>
+        <div class="term-item"><div class="term-label">Analyze</div><div class="term-desc">A customizable pivot table with multiple chart types. Mix dimensions and measures to slice data any way you need. Updates in real time as you configure.</div></div>
+        <div class="term-item"><div class="term-label">History</div><div class="term-desc">A log of every time this report has run — who received it, when, and whether it succeeded. Useful for confirming scheduled reports are running correctly.</div></div>
+        ${imgPlaceholder('Report result with the three tabs (Preview, Analyze, History) visible and the Analyze tab active showing a pivot table','reports-analyze-view.png')}
+      </div>
+    </div>
+    <div id="rep-schedule" class="tab-panel">
+      <div class="article-block">
+        <div class="ah3">Setting up automatic delivery</div>
+        <ol class="steps">
+          <li>Open the report and go to its <strong>Settings</strong>.</li>
+          <li>Select the <strong>Schedule</strong> tab.</li>
+          <li>Choose your frequency: <strong>Daily</strong>, <strong>Weekly</strong>, or <strong>Monthly</strong>.</li>
+          <li>Set the time you want the report to run.</li>
+          <li>Choose the export format: <strong>Excel</strong> or <strong>CSV</strong>.</li>
+          <li>Save your schedule.</li>
+        </ol>
+        ${imgPlaceholder('Report Schedule settings tab showing frequency options, time picker, and export format selector','reports-schedule-settings.png')}
+      </div>
+      <div class="article-block">
+        <div class="ah3">Other settings tabs</div>
+        <div class="term-item"><div class="term-label">General</div><div class="term-desc">Update description, toggle active/inactive, set an expiration date, or adjust priority.</div></div>
+        <div class="term-item"><div class="term-label">Permissions</div><div class="term-desc">Control which other portal users can view or edit this report.</div></div>
+        <div class="term-item"><div class="term-label">Actions</div><div class="term-desc">Configure device actions to fire automatically when devices match report criteria — for example, change rate plans for devices exceeding a usage threshold.</div></div>
+        <div class="callout note"><div class="callout-icon">ℹ️</div><div class="callout-body"><strong>Report Actions</strong>The Actions tab is powerful — devices matching your report can be acted on automatically. Review your filter criteria carefully before enabling automation.</div></div>
+      </div>
+    </div>
+    ${backToTop()}
+  `
+},
+
+alerts: {
+  id:'alerts',
+  label:'Device Alerts',
+  sublabel:'Automated monitoring and device actions',
+  icon:'bell',
+  iconBg:'linear-gradient(135deg,#13A87D,#024534)',
+  roles:['bae','cspe'],
+  badge:'Enterprise CMP',
+  badgeClass:'s-tag-ent',
+  build:(role)=>`
+    <div class="callout tip"><div class="callout-icon">🛡️</div><div class="callout-body"><strong>Enterprise CMP feature</strong>Device Alerts let you define conditions that automatically flag or act on devices — preventing overages and catching anomalies without manual monitoring.</div></div>
+    <p class="article-intro">Set rules once and the portal automatically monitors your fleet. When a device matches your criteria, it can be flagged for review or trigger an automated action like a rate plan change or deactivation.</p>
+    ${imgPlaceholder('Device Alerts main screen showing the list of active alerts with status indicators and category labels','alerts-main-screen.png')}
+    <div class="tabs-row">
+      <button class="tab-btn active" onclick="switchTab(event,'alt','create')">Creating an Alert</button>
+      <button class="tab-btn" onclick="switchTab(event,'alt','categories')">Alert Categories</button>
+      <button class="tab-btn" onclick="switchTab(event,'alt','settings')">Settings & Automation</button>
+      <button class="tab-btn" onclick="switchTab(event,'alt','views')">Viewing Results</button>
+    </div>
+    <div id="alt-create" class="tab-panel active">
+      <div class="article-block">
+        <div class="ah3">Three ways to build an alert</div>
+        <div class="term-item"><div class="term-label">Column Builder</div><div class="term-desc">The default. Click <strong>+ Add Filter</strong> to set column, denomination (KB/MB), operator, and value. Best for straightforward usage thresholds.</div></div>
+        <div class="term-item"><div class="term-label">Query Builder</div><div class="term-desc">Three-section filter covering Analytics (usage statistics), Device Info (identifiers, geography, status), and Carrier Contract (billing, carrier, rate plan). More flexible and powerful.</div></div>
+        <div class="term-item"><div class="term-label">Advanced Query</div><div class="term-desc">For complex custom queries — contact DAC support for assistance.</div></div>
+        ${imgPlaceholder('Alert creation screen showing the three method options and the Column Builder filter interface with sample filters added','alerts-create-screen.png')}
+      </div>
+      <div class="article-block">
+        <div class="ah3">Setting up your first alert</div>
+        <ol class="steps">
+          <li>Go to <strong>Reports & Notifications → Device Alerts</strong>.</li>
+          <li>Click <strong>Add New Alert</strong> and give it a descriptive name.</li>
+          <li>Select your alert category (see the Alert Categories tab).</li>
+          <li>Use <strong>+ Add Filter</strong> to define your trigger conditions.</li>
+          <li>Save — then configure Schedule and Actions in the Settings tabs.</li>
+        </ol>
+        <div class="callout tip"><div class="callout-icon">💡</div><div class="callout-body"><strong>Start with one condition</strong>Build your first alert with a single filter (e.g., CTD data usage greater than 500MB). Once it's returning expected results, add more conditions to refine it.</div></div>
+      </div>
+    </div>
+    <div id="alt-categories" class="tab-panel">
+      <div class="article-block">
+        <div class="ah3">Three alert categories</div>
+        <table class="data-table">
+          <thead><tr><th>Category</th><th>Best for</th><th>Data included</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Usage by Device</strong></td><td>High-usage disable, no-usage reset automations</td><td>Cycle-to-date usage, averages with deviations, billing cycle, carrier details</td></tr>
+            <tr><td><strong>Change Tracking by Device</strong></td><td>Monitoring device changes with full automation capability</td><td>Current usage stats, change history, average usage, device identifiers, carrier contract</td></tr>
+            <tr><td><strong>Usage by Zone History</strong></td><td>Zone-based usage pattern monitoring</td><td>Monthly data and voice usage, billing cycle, service area/zone, technology, device identifiers</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div id="alt-settings" class="tab-panel">
+      <div class="article-block">
+        <div class="ah3">Configuring alert settings</div>
+        <div class="term-item"><div class="term-label">General</div><div class="term-desc">Description, active/inactive toggle, priority, and expiration date for the automation.</div></div>
+        <div class="term-item"><div class="term-label">Permissions</div><div class="term-desc">Control which users can view or edit this alert. Individual email/SMS notification preferences are set in User Management.</div></div>
+        <div class="term-item"><div class="term-label">Schedule</div><div class="term-desc">Run Daily, Weekly, or Monthly at a specific time. Export results as Excel or CSV.</div></div>
+        <div class="term-item"><div class="term-label">Actions</div><div class="term-desc">Define device actions to fire automatically when devices match alert criteria — Activate SIM, Change Rate Plan, custom segmentation, geography enrichment, and more.</div></div>
+        ${imgPlaceholder('Alert Settings showing the four tabs (General, Permissions, Schedule, Actions) with the Actions tab open showing available device action options','alerts-settings-actions.png')}
+        <div class="callout warning"><div class="callout-icon">⚠️</div><div class="callout-body"><strong>Automated Actions are real</strong>Devices matching your alert will be acted on automatically without manual intervention. Review your filter criteria carefully before enabling automation.</div></div>
+      </div>
+    </div>
+    <div id="alt-views" class="tab-panel">
+      <div class="article-block">
+        <div class="ah3">Three ways to review results</div>
+        <div class="term-item"><div class="term-label">Preview</div><div class="term-desc">Sample of matching devices with sortable columns, last refresh date, and total record count. Export to Excel. Click any device IMEI to open its full profile.</div></div>
+        <div class="term-item"><div class="term-label">Analyze</div><div class="term-desc">Multi-variable pivot table with configurable dimensions and measures (usage, device count, session count). Multiple chart types with real-time legend toggling.</div></div>
+        <div class="term-item"><div class="term-label">History</div><div class="term-desc">Complete log of every alert execution — who received it, when, and whether it succeeded. Use this to confirm scheduled alerts are running as expected.</div></div>
+        ${imgPlaceholder('Alert result with Preview tab active showing a sample device table with IMEI links and the export to Excel button','alerts-preview-results.png')}
+      </div>
+    </div>
+    ${backToTop()}
+  `
+},
+
+customers: {
+  id:'customers',
+  label:'Customer Setup',
+  sublabel:'Build and manage your downstream customer hierarchy',
+  icon:'users',
+  iconBg:'linear-gradient(135deg,#13A87D,#024534)',
+  roles:['bae','cspe'],
+  badge:'Enterprise CMP',
+  badgeClass:'s-tag-ent',
+  build:(role)=>`
+    <div class="callout tip"><div class="callout-icon">🏢</div><div class="callout-body"><strong>Enterprise CMP feature</strong>Once customers are added, you can assign SIMs to them so they only see their own devices when they log in.</div></div>
+    <p class="article-intro">Customer Setup lets you build a multi-level organizational hierarchy — customers, divisions, departments, cost centers. Control exactly which SIMs each downstream customer can see and manage their portal branding and configuration.</p>
+    ${imgPlaceholder('Customer Setup main screen showing the organizational hierarchy tree with parent and child customers','customers-hierarchy-overview.png')}
+    <div class="tabs-row">
+      <button class="tab-btn active" onclick="switchTab(event,'cust','add')">Adding Customers</button>
+      <button class="tab-btn" onclick="switchTab(event,'cust','edit')">Configuration Tabs</button>
+      <button class="tab-btn" onclick="switchTab(event,'cust','tags')">Device & Carrier Tags</button>
+    </div>
+    <div id="cust-add" class="tab-panel active">
+      <div class="article-block">
+        <div class="ah3">Adding a new customer or entity</div>
+        <ol class="steps">
+          <li>Go to <strong>Account Management → Customer Setup</strong>.</li>
+          <li>Click <strong>Add</strong> to open the customer information form.</li>
+          <li>Fill in the customer details. Logo upload is optional and can be added later.</li>
+          <li>Save — the new entity appears in your hierarchy immediately.</li>
+          <li>Assign users to the new entity, then assign SIMs.</li>
+        </ol>
+        ${imgPlaceholder('New customer form showing the required fields for account name, address, and country with an optional logo upload area','customers-add-form.png')}
+      </div>
+      <div class="article-block">
+        <div class="ah3">Navigating the hierarchy</div>
+        <p class="article-p">Click on any parent company to move up a level in the hierarchy. Use the <strong>customer drop-down</strong> in the top-left navigation bar to jump directly to any customer's Analytics Dashboard without navigating the tree.</p>
+      </div>
+      <div class="callout warning"><div class="callout-icon">⚠️</div><div class="callout-body"><strong>Plan before you build</strong>Moving entities after creation is difficult. Confirm you're at the correct hierarchy level before adding a new customer, division, or department. Entities are created under the organization you are currently logged into.</div></div>
+      <div class="callout note"><div class="callout-icon">ℹ️</div><div class="callout-body"><strong>Order matters</strong>Customers must be fully set up before SIMs can be assigned to them.</div></div>
+    </div>
+    <div id="cust-edit" class="tab-panel">
+      <div class="article-block">
+        <div class="ah3">Five configuration tabs when editing a customer</div>
+        <div class="term-item"><div class="term-label">Basic Info</div><div class="term-desc">Account name, address, and country.</div></div>
+        <div class="term-item"><div class="term-label">Subscription</div><div class="term-desc">Subscription type, service term, contract start date, and expiration date.</div></div>
+        <div class="term-item"><div class="term-label">Customizations</div><div class="term-desc">Logo upload, website URL, support email, privacy link, and layout/color adjustments for their portal view.</div></div>
+        <div class="term-item"><div class="term-label">SMTP Settings</div><div class="term-desc">Sender email, alias, reply email, SMTP server, port, encryption (None/SSL), and authentication credentials. Always test the connection before saving.</div></div>
+        <div class="term-item"><div class="term-label">API Access</div><div class="term-desc">Create and manage API users with configurable permissions for this customer.</div></div>
+        ${imgPlaceholder('Customer edit screen showing the five configuration tabs with the Customizations tab active showing logo upload and color settings','customers-edit-tabs.png')}
+      </div>
+    </div>
+    <div id="cust-tags" class="tab-panel">
+      <div class="article-block">
+        <div class="ah3">Device Tags (top-level account only)</div>
+        <p class="article-p">Assign custom labels to standard device tag fields. Changes apply across all downstream accounts and affect SIM Management, Reporting, Real-Time Lookup, and Device Alerts throughout your entire hierarchy.</p>
+      </div>
+      <div class="article-block">
+        <div class="ah3">Carrier Tags (top-level account only)</div>
+        <p class="article-p">Customize carrier tags using text fields and drop-down selections. Separate multiple values with semicolons. Changes impact carrier data source defaults for all downstream customers.</p>
+      </div>
+      ${imgPlaceholder('Device Tags configuration screen showing the custom label fields for standard device tag columns','customers-device-tags.png')}
+      <div class="callout warning"><div class="callout-icon">⚠️</div><div class="callout-body"><strong>Tag changes cascade</strong>Device and Carrier Tag changes made at the top-level account affect every customer below it in your hierarchy. Review carefully before saving.</div></div>
+    </div>
+    ${backToTop()}
+  `
+},
+
+users: {
+  id:'users',
+  label:'User Management',
+  sublabel:'Add users, assign roles, and configure sign-on',
+  icon:'person',
+  iconBg:'linear-gradient(135deg,#2b96af,#134B60)',
+  roles:['csps','cspe'],
+  badge:'CSP Admin',
+  badgeClass:'s-tag-adm',
+  build:(role)=>`
+    <p class="article-intro">As a CSP Admin you control who has access to the portal and what they can do. User Management lets you create accounts, assign roles, and configure both standard registration and corporate single sign-on.</p>
+    ${imgPlaceholder('User Management main screen showing the user list table with columns for Name, Role, Last Login, and Invitation Date','users-main-screen.png')}
+    <div class="tabs-row">
+      <button class="tab-btn active" onclick="switchTab(event,'usr','add')">Adding Users</button>
+      <button class="tab-btn" onclick="switchTab(event,'usr','sso')">SSO & Authentication</button>
+      <button class="tab-btn" onclick="switchTab(event,'usr','roles')">Roles Reference</button>
+    </div>
+    <div id="usr-add" class="tab-panel active">
+      <div class="article-block">
+        <div class="ah3">Adding a new user</div>
+        <ol class="steps">
+          <li>Go to <strong>Account Management → User Management</strong>.</li>
+          <li>Click <strong>Add User</strong> and complete the required fields including name, email, and role.</li>
+          <li>Save — the new user automatically receives an invitation email with a registration link.</li>
+          <li>The user clicks the link and sets a password on the <strong>Azure AD Sign-Up</strong> page.</li>
+          <li>Once registered, users can be edited or have their role adjusted at any time.</li>
+        </ol>
+        ${imgPlaceholder('Add User form showing required fields for name, email address, and role assignment dropdown','users-add-form.png')}
+        <div class="callout note"><div class="callout-icon">ℹ️</div><div class="callout-body"><strong>Invitation email</strong>The email goes out automatically when you save the new user. Verify the email address is correct before saving — you can resend from the User Management screen if needed.</div></div>
+      </div>
+    </div>
+    <div id="usr-sso" class="tab-panel">
+      <div class="article-block">
+        <div class="ah3">Enabling corporate single sign-on (SSO)</div>
+        <ol class="steps">
+          <li>The user must first complete standard <strong>Azure AD registration</strong> via their invitation link.</li>
+          <li>Once registered, open their user record in User Management and click <strong>Edit</strong>.</li>
+          <li>Enter the user's corporate identity in the <strong>SSO ID</strong> box (3rd Party Open ID field).</li>
+          <li>Save — the user can now sign in using their corporate credentials.</li>
+        </ol>
+        ${imgPlaceholder('User edit screen showing the SSO ID field highlighted with instructional text explaining the 3rd Party Open ID input','users-sso-setup.png')}
+        <div class="callout warning"><div class="callout-icon">⚠️</div><div class="callout-body"><strong>SSO requires Azure AD first</strong>Corporate SSO can only be enabled after the user completes initial Azure AD registration. The two steps cannot be swapped.</div></div>
+      </div>
+    </div>
+    <div id="usr-roles" class="tab-panel">
+      <div class="article-block">
+        <div class="ah3">Available roles to assign</div>
+        <p class="article-p">The full roles access matrix — showing exactly what each role can see and do across every subscription type — is available on the User Management page inside the portal. Roles available to assign include:</p>
+        <ul class="bullet-list">
+          <li>Admin / Approver Admin</li>
+          <li>Basic Access</li>
+          <li>Customer Admin / Customer Service</li>
+          <li>Executive / Finance / Operations</li>
+          <li>Optimization Support / Sales / Technical Support</li>
+          <li>Downstream ReadOnly</li>
+          <li>CSP Admin</li>
+          <li>API User</li>
+        </ul>
+        ${imgPlaceholder('Roles Access Matrix table on the User Management page showing roles in rows and feature access in columns','users-roles-matrix.png')}
+      </div>
+    </div>
+    ${backToTop()}
+  `
+},
+
+actionstatus: {
+  id:'actionstatus',
+  label:'Action Status',
+  sublabel:'Monitor, approve, and track device action jobs',
+  icon:'clock',
+  iconBg:'linear-gradient(135deg,#2b96af,#134B60)',
+  roles:['csps','cspe'],
+  badge:'CSP Admin',
+  badgeClass:'s-tag-adm',
+  build:(role)=>`
+    <p class="article-intro">Action Status is your control center for all device jobs — both scheduled and ad-hoc. Access it any time via the <strong>Processes</strong> button in the upper-right corner of any portal page.</p>
+    ${imgPlaceholder('Processes screen with the Device Actions tab active showing a job list with Status, Operation, Carrier, and Approver columns','actionstatus-main-screen.png')}
+    <div class="article-block">
+      <div class="ah3">Filtering and finding jobs</div>
+      <div class="term-item"><div class="term-label">Carrier Connection</div><div class="term-desc">Narrow to jobs on a specific carrier connection.</div></div>
+      <div class="term-item"><div class="term-label">Status</div><div class="term-desc">Completed, Failed, In Progress, Needs Approval, or Waiting.</div></div>
+      <div class="term-item"><div class="term-label">Operations</div><div class="term-desc">Filter by action type: Activate SIM, Change Rate Plan, Send SMS, Terminate SIM, and more.</div></div>
+      <div class="term-item"><div class="term-label">Approvers & Date Range</div><div class="term-desc">Filter by who approved a job and the date range it was processed.</div></div>
+      ${imgPlaceholder('Action Status filter bar showing all filter dropdowns with the Status dropdown open showing the five status options','actionstatus-filters.png')}
+    </div>
+    <div class="article-block">
+      <div class="ah3">Approving jobs that need approval</div>
+      <ol class="steps">
+        <li>Open <strong>Processes</strong> from the upper-right corner of any portal page.</li>
+        <li>Select the <strong>Device Actions</strong> tab.</li>
+        <li>Filter Status to <strong>Needs Approval</strong>.</li>
+        <li>Select the jobs you want to approve using the checkboxes.</li>
+        <li>Process them through the approval workflow.</li>
+      </ol>
+      ${imgPlaceholder('Device Actions screen filtered to Needs Approval status with jobs selected and the Approve button highlighted','actionstatus-approve-jobs.png')}
+    </div>
+    <div class="callout note"><div class="callout-icon">ℹ️</div><div class="callout-body"><strong>Search within jobs</strong>Use the search bar to find specific jobs by alphanumeric strings — useful for locating a particular bulk upload or SIM action by reference.</div></div>
+    ${backToTop()}
+  `
+},
+
+watchlists: {
+  id:'watchlists',
+  label:'Watch Lists',
+  sublabel:'Track groups of devices for monitoring',
+  icon:'eye',
+  iconBg:'linear-gradient(135deg,#13A87D,#024534)',
+  roles:['cspe'],
+  badge:'Enterprise CMP',
+  badgeClass:'s-tag-ent',
+  build:(role)=>`
+    <div class="callout tip"><div class="callout-icon">👁️</div><div class="callout-body"><strong>Enterprise CMP feature</strong>Watch Lists let you define a set of SIMs to track together and optionally attach a Custom Notification alert for proactive monitoring.</div></div>
+    <p class="article-intro">Use Watch Lists to group devices by any criteria that matters to you — a new deployment, devices pending firmware updates, a specific customer's fleet. Once created, you can monitor the group and attach alerts.</p>
+    ${imgPlaceholder('Watch Lists screen showing a list of saved watch lists with device count and last updated timestamp','watchlists-main-screen.png')}
+    <div class="article-block">
+      <div class="ah3">Creating a Watch List</div>
+      <ol class="steps">
+        <li>Create a list of ICCIDs/SIMs in an Excel file — one ICCID per row.</li>
+        <li>In the portal, go to <strong>Device Management → Watch Lists</strong>.</li>
+        <li>Click <strong>Choose File</strong> and locate your Excel spreadsheet.</li>
+        <li>Click <strong>Upload SIMs</strong> — the list is saved to the portal database.</li>
+        <li>Review the estimated record count to confirm the upload is complete.</li>
+        <li>Use the chevron icons to expand detail for any individual watch list entry.</li>
+      </ol>
+      ${imgPlaceholder('Watch List upload dialog showing the Choose File button, file selected state, Upload SIMs button, and the estimated record count confirmation','watchlists-upload.png')}
+    </div>
+    <div class="article-block">
+      <div class="ah3">Adding a Custom Notification alert</div>
+      <p class="article-p">Once a Watch List is created, you can attach a Custom Notification alert to it. This triggers an alert when devices on the list match your defined conditions — giving you proactive visibility without manual checking.</p>
+    </div>
+    <div class="callout tip"><div class="callout-icon">💡</div><div class="callout-body"><strong>Best use cases</strong>New deployments, devices flagged for firmware updates, or any subset of your fleet you need to monitor as a group. Keep your Excel file organized by ICCID for cleanest uploads.</div></div>
+    ${backToTop()}
+  `
+},
+
+notifications: {
+  id:'notifications',
+  label:'Notification Preferences',
+  sublabel:'Email and SMS control for all reports and alerts',
+  icon:'notif',
+  iconBg:'linear-gradient(135deg,#13A87D,#2b96af)',
+  roles:['cspe'],
+  badge:'Enterprise CMP',
+  badgeClass:'s-tag-ent',
+  build:(role)=>`
+    <p class="article-intro">Notification Preferences centralizes all report and alert notifications in one screen. Configure email and SMS delivery independently for each category — so you get the alerts you need, in the way that works best for you.</p>
+    ${imgPlaceholder('Notification Preferences main screen showing the four category tabs and toggle switches for Email and SMS columns','notifications-main-screen.png')}
+    <div class="article-block">
+      <div class="ah3">Four notification categories</div>
+      <div class="term-item"><div class="term-label">Bill Cycle Reminders</div><div class="term-desc">Notifications for billing cycle events — helpful for teams that monitor usage against billing deadlines.</div></div>
+      <div class="term-item"><div class="term-label">Scheduled Reports</div><div class="term-desc">Confirmation notifications when scheduled reports run, so you know delivery was successful.</div></div>
+      <div class="term-item"><div class="term-label">Device Alerts</div><div class="term-desc">Notifications when alert conditions are triggered on your devices.</div></div>
+      <div class="term-item"><div class="term-label">Device Actions</div><div class="term-desc">Confirmation when device actions complete — especially useful for bulk jobs and automated actions.</div></div>
+    </div>
+    <div class="article-block">
+      <div class="ah3">Configuring email and SMS notifications</div>
+      <ol class="steps">
+        <li>Go to <strong>Reports & Notifications → Notification Preferences</strong>.</li>
+        <li>Click the tab for the category you want to configure.</li>
+        <li>Search for specific reports or alerts if the list is long.</li>
+        <li>Toggle <strong>Email</strong> and/or <strong>SMS</strong> for individual items.</li>
+        <li>Or use the top-of-page checkbox to enable a notification type for all items in that category at once.</li>
+      </ol>
+      ${imgPlaceholder('Notification Preferences Device Alerts tab showing a list of alerts with Email and SMS toggle switches, some on and some off','notifications-toggles.png')}
+    </div>
+    <div class="article-block">
+      <div class="ah3">Registering for SMS</div>
+      <ol class="steps">
+        <li>Click <strong>Register for SMS</strong> at the top of the Notification Preferences screen.</li>
+        <li>Enter your phone number and country code.</li>
+        <li>Click <strong>Register</strong> to activate SMS delivery.</li>
+      </ol>
+      ${imgPlaceholder('Register for SMS dialog showing the phone number field and country code selector with the Register button','notifications-sms-register.png')}
+    </div>
+    ${backToTop()}
+  `
+},
+
+offline: {
+  id:'offline',
+  label:'Offline Reports',
+  sublabel:'One hub for all large exported spreadsheets',
+  icon:'download',
+  iconBg:'linear-gradient(135deg,#3AC7D6,#2b96af)',
+  roles:['cspe'],
+  badge:'Enterprise CMP',
+  badgeClass:'s-tag-ent',
+  build:(role)=>`
+    <p class="article-intro">Offline Reports collects all large spreadsheet exports from across the portal in one location. Reports arrive and sort automatically into five categories — no hunting through different sections to find what you need.</p>
+    ${imgPlaceholder('Offline Reports screen showing the five category sections with report files listed under each with file size and modification date','offline-main-screen.png')}
+    <div class="article-block">
+      <div class="ah3">Five automatic categories</div>
+      <ul class="bullet-list">
+        <li><strong>Ad-Hoc Reports</strong> — exports from your custom report builder</li>
+        <li><strong>Cost Reports</strong> — billing and cost allocation exports</li>
+        <li><strong>Device Alerts</strong> — exports triggered by your device alert rules</li>
+        <li><strong>Miscellaneous Files</strong> — other portal-generated files</li>
+        <li><strong>Rate Plan Changes</strong> — records of rate plan change jobs</li>
+      </ul>
+    </div>
+    <div class="article-block">
+      <div class="ah3">Finding and downloading reports</div>
+      <ol class="steps">
+        <li>Go to <strong>Reports & Notifications → Offline Reports</strong>.</li>
+        <li>Sort by <strong>Name</strong>, <strong>Template</strong>, <strong>Modification Date</strong>, or <strong>Size</strong> to find what you need.</li>
+        <li>Use the <strong>search bar</strong> to query by report name if the list is large.</li>
+        <li>Click a report to start the Excel download immediately.</li>
+      </ol>
+      ${imgPlaceholder('Offline Reports screen with the sort options open and the search bar active, showing a filtered list of report files','offline-search-sort.png')}
+    </div>
+    <div class="article-block">
+      <div class="ah3">Other available actions</div>
+      <div class="term-item"><div class="term-label">Delete</div><div class="term-desc">Select the trash icon next to any file to remove it from the hub.</div></div>
+      <div class="term-item"><div class="term-label">Edit Custom Rule</div><div class="term-desc">Select the edit icon to navigate directly to the associated Device Alert that generated the file.</div></div>
+    </div>
+    ${backToTop()}
+  `
+},
+
+processes: {
+  id:'processes',
+  label:'Job Console / Processes',
+  sublabel:'Monitor data pipes, device actions, and rating operations',
+  icon:'clock',
+  iconBg:'linear-gradient(135deg,#2b96af,#134B60)',
+  roles:['cspe'],
+  badge:'Enterprise CMP',
+  badgeClass:'s-tag-ent',
+  build:(role)=>`
+    <p class="article-intro">The Processes screen is your single panel for all portal operations. Access it via the <strong>Processes</strong> button in the upper-right corner of any page. Three tabs cover every operational category.</p>
+    ${imgPlaceholder('Processes screen showing the three tabs (Data Pipes, Device Actions, Rating and Mediation) with the Data Pipes tab active','processes-main-screen.png')}
+    <div class="tabs-row">
+      <button class="tab-btn active" onclick="switchTab(event,'proc','pipes')">Data Pipes</button>
+      <button class="tab-btn" onclick="switchTab(event,'proc','actions')">Device Actions</button>
+      <button class="tab-btn" onclick="switchTab(event,'proc','rating')">Rating & Mediation</button>
+    </div>
+    <div id="proc-pipes" class="tab-panel active">
+      <div class="article-block">
+        <div class="ah3">Monitoring automated data ingestion</div>
+        <p class="article-p">The Data Pipes tab shows real-time health of automated and ad-hoc portal functions — invoice processing, device detail updates, report generation, and terminal usage details.</p>
+        <ol class="steps">
+          <li>Open <strong>Processes</strong> and select the <strong>Data Pipes</strong> tab.</li>
+          <li>Filter by Carrier Connection and Status to identify issues quickly.</li>
+          <li>Select any failed job and click <strong>Rerun</strong> to retry it.</li>
+        </ol>
+        ${imgPlaceholder('Data Pipes tab showing a filtered view with Status set to Failed, highlighting two failed jobs with a Rerun button visible','processes-data-pipes-failed.png')}
+        <div class="callout tip"><div class="callout-icon">💡</div><div class="callout-body"><strong>Quick health check</strong>Filter to Status: Failed first thing each morning to catch any overnight ingestion issues before they affect your reporting or analytics.</div></div>
+      </div>
+    </div>
+    <div id="proc-actions" class="tab-panel">
+      <div class="article-block">
+        <div class="ah3">Managing device action jobs</div>
+        <p class="article-p">The Device Actions tab is the control center for all scheduled and ad-hoc device operations — the same view as Action Status, with full filtering and approval capability.</p>
+        <ol class="steps">
+          <li>Open <strong>Processes → Device Actions</strong>.</li>
+          <li>Filter by Carrier, Status, Operation type, Approvers, and date range.</li>
+          <li>To approve: filter Status to <strong>Needs Approval</strong>, select jobs, and process through the approval workflow.</li>
+          <li>Use the <strong>search bar</strong> to find specific jobs by alphanumeric reference.</li>
+        </ol>
+        ${imgPlaceholder('Device Actions tab filtered to Needs Approval status showing selected jobs with the Approve button active','processes-device-actions-approve.png')}
+      </div>
+    </div>
+    <div id="proc-rating" class="tab-panel">
+      <div class="article-block">
+        <div class="ah3">Rating and Mediation operations</div>
+        <p class="article-p">A single point for rating operations across all carrier connections. Filter by carrier, job status, operation type, and date range. Supports scheduling and automation of rating jobs.</p>
+        ${imgPlaceholder('Rating and Mediation tab showing the filter bar and a list of rating operation jobs with status indicators','processes-rating-mediation.png')}
+        <div class="callout note"><div class="callout-icon">ℹ️</div><div class="callout-body"><strong>Questions about rating operations?</strong>Rating and mediation involve carrier billing logic. Contact DAC support if you're unsure what a specific job is doing before rerunning or modifying it.</div></div>
+      </div>
+    </div>
+    ${backToTop()}
+  `
+}
+
+}; // end SECTIONS
+
+// ═══════════════════════════════════════════
+// HELPERS
+// ═══════════════════════════════════════════
+function imgPlaceholder(desc, filename) {
+  return `
+    <div class="img-placeholder">
+      <div class="img-ph-icon">
+        <svg viewBox="0 0 24 24" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+      </div>
+      <div class="img-ph-text">
+        <div class="img-ph-label">📸 Screenshot goes here</div>
+        <div class="img-ph-desc">${desc}</div>
+        <div class="img-ph-tag">${filename}</div>
+      </div>
+    </div>`;
+}
+
+function backToTop() {
+  return `<div class="back-top" onclick="document.getElementById('main-content').scrollIntoView({behavior:'smooth'})"><svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"/></svg>Back to top</div>`;
+}
+
+function getIcon(name) {
+  const icons = {
+    dashboard:`<svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>`,
+    bar:`<svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>`,
+    phone:`<svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>`,
+    file:`<svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>`,
+    bell:`<svg viewBox="0 0 24 24"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 01-3.46 0"/></svg>`,
+    users:`<svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>`,
+    userplus:`<svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" y1="8" x2="19" y2="14"/><line x1="22" y1="11" x2="16" y2="11"/></svg>`,
+    clock:`<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>`,
+    person:`<svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>`,
+    eye:`<svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>`,
+    notif:`<svg viewBox="0 0 24 24"><path d="M22 17H2a3 3 0 000 6h20a3 3 0 000-6zM5.45 5.11L2 12v3h20v-3L18.55 5.11A8 8 0 005.45 5.11z"/></svg>`,
+    download:`<svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>`,
+    zap:`<svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>`,
+    schedule:`<svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>`,
+  };
+  return icons[name] || icons.file;
+}
+
+// ═══════════════════════════════════════════
+// ROLE SELECTION
+// ═══════════════════════════════════════════
+let currentRole = null;
+
+function selectRole(roleKey) {
+  currentRole = roleKey;
+  const role = ROLES[roleKey];
+
+  // Show app, hide landing
+  document.getElementById('landing').style.display = 'none';
+  document.getElementById('app').style.display = 'block';
+  document.getElementById('app').setAttribute('data-role', roleKey);
+
+  // Update top bar
+  const pill = document.getElementById('role-pill');
+  pill.style.display = 'flex';
+  document.getElementById('role-pill-dot').style.background = role.dotColor;
+  document.getElementById('role-pill-label').textContent = role.label;
+  document.getElementById('footer-role').textContent = role.label;
+
+  // Build sidebar
+  buildSidebar(roleKey);
+
+  // Build main content
+  buildMain(roleKey);
+
+  // Scroll to top
+  window.scrollTo(0,0);
+}
+
+function switchRole() {
+  document.getElementById('landing').style.display = 'block';
+  document.getElementById('app').style.display = 'none';
+  document.getElementById('role-pill').style.display = 'none';
+  window.scrollTo(0,0);
+}
+
+// ═══════════════════════════════════════════
+// BUILD SIDEBAR
+// ═══════════════════════════════════════════
+function buildSidebar(roleKey) {
+  const role = ROLES[roleKey];
+  const sidebar = document.getElementById('sidebar');
+
+  // Group sections by category
+  const groups = {
+    'Getting Started': ['qs'],
+    'Account': ['users','customers'],
+    'Analytics': ['analytics','usage'],
+    'Device Management': ['devices','actionstatus','watchlists'],
+    'Reports & Notifications': ['reports','alerts','notifications','offline'],
+    'Data Management': ['processes'],
+  };
+
+  let html = '';
+  for (const [groupLabel, sectionIds] of Object.entries(groups)) {
+    const visible = sectionIds.filter(id => {
+      if (id === 'qs') return true;
+      return SECTIONS[id] && SECTIONS[id].roles.includes(roleKey);
     });
-  }, { rootMargin: '-80px 0px -60% 0px' });
+    if (!visible.length) continue;
 
-  sections.forEach(id => {
-    const el = document.getElementById(id);
-    if (el) observer.observe(el);
+    html += `<div class="sidebar-label">${groupLabel}</div>`;
+    visible.forEach(id => {
+      if (id === 'qs') {
+        html += `<a class="sidebar-link active" onclick="scrollToTop()">
+          <svg viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor" fill="none"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          Quick Start
+        </a>`;
+        return;
+      }
+      const sec = SECTIONS[id];
+      const badgeHtml = sec.badge ? `<span class="s-tag ${sec.badgeClass}">${sec.badge==='Enterprise CMP'?'Ent':'Admin'}</span>` : '';
+      html += `<a class="sidebar-link" onclick="scrollToSection('${id}')" id="sbl-${id}">
+        ${getIcon(sec.icon)}
+        ${sec.label}
+        ${badgeHtml}
+      </a>`;
+    });
+  }
+  html += `<div class="sidebar-label">Support</div>
+    <a class="sidebar-link" href="mailto:support@dataactivationcenter.com">
+      <svg viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor" fill="none"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+      Contact Support
+    </a>`;
+
+  sidebar.innerHTML = html;
+}
+
+// ═══════════════════════════════════════════
+// BUILD MAIN CONTENT
+// ═══════════════════════════════════════════
+function buildMain(roleKey) {
+  const role = ROLES[roleKey];
+  const main = document.getElementById('main-content');
+
+  // Welcome banner colors
+  const chipDot = `background:${role.bannerAccent}`;
+  const chipsHTML = getChips(roleKey).map(c =>
+    `<div class="wb-chip"><div class="wb-dot" style="${chipDot}"></div>${c}</div>`
+  ).join('');
+
+  // Quick start cards
+  const qsCards = role.qs.map(q => `
+    <a class="qs-card" onclick="openSection('${q.target}')">
+      <div class="qs-icon" style="background:${role.iconBg}">${getIcon(q.icon)}</div>
+      <div class="qs-card-title">${q.label}</div>
+      <div class="qs-card-desc">${q.desc}</div>
+    </a>
+  `).join('');
+
+  // Content sections
+  const sectionsHTML = role.sections.map(secId => {
+    const sec = SECTIONS[secId];
+    if (!sec) return '';
+    const badgeHTML = sec.badge
+      ? `<span class="cs-badge ${sec.badgeClass}">${sec.badge}</span>`
+      : '';
+    return `
+      <div class="content-section" id="sec-${secId}">
+        <div class="cs-header" onclick="toggleSection('${secId}')">
+          <div class="cs-icon" style="background:${sec.iconBg}">${getIcon(sec.icon)}</div>
+          <div class="cs-header-text">
+            <div class="cs-title">${sec.label}</div>
+            <div class="cs-subtitle">${sec.sublabel}</div>
+          </div>
+          ${badgeHTML}
+          <div class="cs-toggle"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+        </div>
+        <div class="cs-body">
+          ${sec.build(roleKey)}
+        </div>
+      </div>`;
+  }).join('');
+
+  main.innerHTML = `
+    <div class="welcome-banner" style="background:${role.bannerGradient};" id="welcome-top">
+      <div class="wb-eyebrow">${role.label}</div>
+      <div class="wb-title">Welcome to the DAC IQ Portal Help Center</div>
+      <div class="wb-desc">This guide covers everything available to you. Select what you want to do below or scroll through the full guide.</div>
+      <div class="wb-chips">${chipsHTML}</div>
+    </div>
+
+    <div class="qs-title">What do you want to do?</div>
+    <div class="qs-sub">Jump directly to what you need</div>
+    <div class="qs-grid">${qsCards}</div>
+
+    <div class="divider"></div>
+
+    ${sectionsHTML}
+
+    <div class="support-card">
+      <div class="support-icon" style="background:${role.iconBg}">
+        <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+      </div>
+      <div style="flex:1;">
+        <div class="support-text-title">Still need help?</div>
+        <div class="support-text-sub">Your DAC support team is here for anything in this guide.</div>
+      </div>
+      <a href="mailto:support@dataactivationcenter.com" class="support-btn" style="background:${role.iconBg}">Contact Support</a>
+    </div>
+  `;
+}
+
+function getChips(roleKey) {
+  const map = {
+    bas:['Analytics Dashboard','Usage Monitoring','Device Details & Actions','Ad-Hoc Reports'],
+    bae:['Analytics Dashboard','Usage Monitoring','Device Actions','Ad-Hoc Reports','Device Alerts','Customer Setup'],
+    csps:['User Management','Dashboard · Usage · Activity','Device Details & Actions','Action Status','Ad-Hoc Reports'],
+    cspe:['User Management','Customer Setup','Full Analytics Suite','Device Actions','Watch Lists','Device Alerts','Notification Prefs','Offline Reports','Job Console'],
+  };
+  return map[roleKey] || [];
+}
+
+// ═══════════════════════════════════════════
+// INTERACTIONS
+// ═══════════════════════════════════════════
+function toggleSection(id) {
+  const el = document.getElementById('sec-' + id);
+  if (el) el.classList.toggle('open');
+  updateSidebarActive(id);
+}
+
+function openSection(id) {
+  const el = document.getElementById('sec-' + id);
+  if (!el) return;
+  if (!el.classList.contains('open')) el.classList.add('open');
+  setTimeout(() => el.scrollIntoView({behavior:'smooth', block:'start'}), 60);
+  updateSidebarActive(id);
+}
+
+function scrollToSection(id) {
+  openSection(id);
+}
+
+function scrollToTop() {
+  document.getElementById('welcome-top').scrollIntoView({behavior:'smooth', block:'start'});
+  document.querySelectorAll('.sidebar-link').forEach(l => l.classList.remove('active'));
+  document.querySelector('.sidebar-link')?.classList.add('active');
+}
+
+function updateSidebarActive(id) {
+  document.querySelectorAll('.sidebar-link').forEach(l => l.classList.remove('active'));
+  const link = document.getElementById('sbl-' + id);
+  if (link) link.classList.add('active');
+}
+
+function switchTab(e, group, panel) {
+  const row = e.target.closest('.tabs-row');
+  if (!row) return;
+  row.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  e.target.classList.add('active');
+  document.querySelectorAll('[id^="' + group + '-"]').forEach(p => p.classList.remove('active'));
+  const target = document.getElementById(group + '-' + panel);
+  if (target) target.classList.add('active');
+}
+
+// Intersection observer to auto-highlight sidebar
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const id = entry.target.id.replace('sec-','');
+      updateSidebarActive(id);
+    }
   });
-</script>
+}, {rootMargin:'-80px 0px -60% 0px'});
 
+const origBuildMain = buildMain;
+window.buildMain = function(roleKey) {
+  origBuildMain(roleKey);
+  setTimeout(() => {
+    document.querySelectorAll('.content-section').forEach(el => io.observe(el));
+  }, 100);
+};
+</script>
 </body>
 </html>
